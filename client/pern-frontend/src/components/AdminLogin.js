@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Login = ({ setAuth }) => {
+const AdminLogin = ({ setAuth }) => {
 
     const [inputs, setInputs] = useState({
         email: "",
@@ -12,7 +12,7 @@ const Login = ({ setAuth }) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
 
-    const [userRole, setRole] = useState('Employee')
+    const [userRole, setRole] = useState('Admin')
     const setUserRole = (e) => {
         setRole(e.target.value)
 
@@ -65,6 +65,7 @@ const Login = ({ setAuth }) => {
                 <label>
                     <select onChange={e => setUserRole(e)}>
                         <option value="Employee" name="Employee" >Employee</option>
+                        <option value='Admin' name="Admin" >Admin</option>
                     </select>
                 </label>
                 <button type="submit" >Log In</button>
@@ -74,4 +75,4 @@ const Login = ({ setAuth }) => {
     )
 }
 
-export default Login
+export default AdminLogin

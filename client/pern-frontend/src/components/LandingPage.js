@@ -6,7 +6,8 @@ function LandingPage() {
         <div>
             <Link to="/login"><button>Login</button></Link>
             <Link to="/register"><button>Register</button></Link>
-        </div>
+            <Link to="/admin-login"><button>Admin Login</button></Link>
+        </div >
     )
 }
 
