@@ -8,7 +8,7 @@ const authorization = require('../middleware/authorization');
 //register
 router.post('/register', validInfo, async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, userRole } = req.body;
         const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
             email
         ]);
@@ -17,15 +17,14 @@ router.post('/register', validInfo, async (req, res) => {
         const salt = await bcrypt.genSalt(saltRound);
         const bcryptPassword = await bcrypt.hash(password, salt);
 
-        const newUser = await pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES($1,$2,$3) RETURNING * ", [
-            name, email, bcryptPassword
+        const newUser = await pool.query("INSERT INTO users (user_name, user_email, user_password, user_role) VALUES($1,$2,$3,$4) RETURNING * ", [
+            name, email, bcryptPassword, userRole
         ]);
 
         const token = jwtGenerator(newUser.rows[0].user_id);
         if (user.rows.length !== 0) {
             return res.status(401).send("User already exists")
         }
-
         return res.json({ token });
     } catch (err) {
 
@@ -37,9 +36,9 @@ router.post('/register', validInfo, async (req, res) => {
 
 router.post('/login', validInfo, async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [
-            email
+        const { email, password, userRole } = req.body;
+        const user = await pool.query('SELECT * FROM users WHERE user_email = $1 AND user_role =$2 ', [
+            email, userRole
         ]);
         if (user.rows.length === 0) {
             return res.status(401).json('Password and/or email is incorrect does not exist')
@@ -57,6 +56,7 @@ router.post('/login', validInfo, async (req, res) => {
         console.log(err.message)
     }
 })
+
 
 router.get('/is-verify', authorization, async (req, res) => {
     try {

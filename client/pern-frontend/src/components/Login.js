@@ -1,38 +1,50 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 
 const Login = ({ setAuth }) => {
 
     const [inputs, setInputs] = useState({
         email: "",
-        password: ""
+        password: "",
     })
 
     const { email, password } = inputs;
-
     const onChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
+    }
+
+    const [userRole, setRole] = useState('Employee')
+    const setUserRole = (e) => {
+        setRole(e.target.value)
+
     }
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const body = { email, password }
-            const response = await fetch("http://localhost:5000/auth/login",
+            const body = { email, password, userRole };
+            const response = await fetch(
+                "http://localhost:5000/auth/login",
                 {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {
+                        "Content-type": "application/json"
+                    },
                     body: JSON.stringify(body)
                 }
-            )
-
+            );
             const parseRes = await response.json();
-            localStorage.setItem("token", parseRes.token);
-            setAuth(true);
-            console.log(parseRes)
+
+            if (parseRes.token) {
+                localStorage.setItem("token", parseRes.token);
+                setAuth(true);
+            } else {
+                setAuth(false);
+            }
         } catch (err) {
-            console.log(err.message);
+            console.error(err.message);
         }
-    }
+    };
+
     return (
         <div>
             <h2>Log into your account</h2>
@@ -48,12 +60,18 @@ const Login = ({ setAuth }) => {
                 <input name="password"
                         value={password}
                         type="password"
-                        onChange={e => onChange(e)} />
+                        onChange={e => { onChange(e); console.log(userRole) }} />
                 </label>
-                <button type="submit">Log In</button>
+                <label>
+                    <select onChange={e => setUserRole(e)}>
+                        <option value="Employee" name="Employee" >Employee</option>
+                        <option value='Admin' name="Admin" >Admin</option>
+                    </select>
+                </label>
+                <button type="submit" >Log In</button>
             </form>
 
-        </div>
+        </div >
     )
 }
 
