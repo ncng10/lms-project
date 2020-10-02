@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-
+import AdminNavBar from './AdminDashboardComponents/AdminNavBar'
+import './AdminDashboard.scss'
 function AdminDashboard({ setAuth }) {
     const [name, setName] = useState("");
+    const [role, setRole] = useState("");
     async function getName() {
         try {
             const response = await fetch("http://localhost:5000/dashboard/",
@@ -11,6 +13,7 @@ function AdminDashboard({ setAuth }) {
                 });
             const parseRes = await response.json();
             setName(parseRes.user_name)
+            setRole(parseRes.user_role)
         } catch (err) {
             console.log(err.message)
         }
@@ -22,10 +25,9 @@ function AdminDashboard({ setAuth }) {
         getName()
     })
     return (
-        <div>
-            <h1>Admin Dashboard</h1>
-            <h2>Hello, {name}</h2>
-            <button onClick={() => { setAuth(false); removeToken(); }}>Log Out</button>
+        <div className="adminDashboard">
+            <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />
+            <h4>Hello, {name} ({role})</h4>
         </div >
     )
 }

@@ -45,10 +45,8 @@ function App() {
   return (
     <Fragment>
       <Router>
-        <div>
-          <LandingPage />
-        </div>
         <Switch>
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/admin-login" render={props => !isAuthenticated ? (
             <AdminLogin {...props} setAuth={setAuth} />) : (
               <Redirect to="/admin-dashboard" />)} />
