@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
+
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
+    const [role, setRole] = useState("");
     async function getName() {
         try {
             const response = await fetch("http://localhost:5000/dashboard/",
@@ -11,6 +13,7 @@ function Dashboard({ setAuth }) {
                 });
             const parseRes = await response.json();
             setName(parseRes.user_name)
+            setRole(parseRes.user_role);
         } catch (err) {
             console.log(err.message)
         }
@@ -24,7 +27,7 @@ function Dashboard({ setAuth }) {
     return (
         <div>
             <h1>Employee Dashboard</h1>
-            <h2>Hello, {name}</h2>
+            <h2>Hello, {name} ({role})</h2>
             <button onClick={() => { setAuth(false); removeToken(); }}>Log Out</button>
         </div >
     )

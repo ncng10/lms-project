@@ -64,7 +64,6 @@ const AdminLogin = ({ setAuth }) => {
                 </label>
                 <label>
                     <select onChange={e => setUserRole(e)}>
-                        <option value="Employee" name="Employee" >Employee</option>
                         <option value='Admin' name="Admin" >Admin</option>
                     </select>
                 </label>

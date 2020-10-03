@@ -13,7 +13,7 @@ import Dashboard from './components/Dashboard'
 import LandingPage from './components/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
 import AdminLogin from './components/AdminLogin';
-
+import EmployeeRoster from './components/AdminDashboardComponents/EmployeeRoster'
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -46,6 +46,9 @@ function App() {
     <Fragment>
       <Router>
         <Switch>
+
+          <Route exact path="/employee-roster" component={EmployeeRoster} />
+
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/admin-login" render={props => !isAuthenticated ? (
             <AdminLogin {...props} setAuth={setAuth} />) : (
