@@ -1,23 +1,17 @@
 import React, { useState } from 'react'
-
 const Login = ({ setAuth }) => {
-
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     })
-
     const { email, password } = inputs;
     const onChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
-
     const [userRole, setRole] = useState('Student')
     const setUserRole = (e) => {
         setRole(e.target.value)
-
     }
-
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
@@ -33,7 +27,6 @@ const Login = ({ setAuth }) => {
                 }
             );
             const parseRes = await response.json();
-
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
                 setAuth(true);
@@ -44,7 +37,6 @@ const Login = ({ setAuth }) => {
             console.error(err.message);
         }
     };
-
     return (
         <div className="loginContainer">
             <img className="logo" src={require('../logo_2.png')} alt="" />

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./LandingPage.scss"
-
 function LandingPage() {
     return (
         <div className="landingPage">
@@ -14,15 +13,8 @@ function LandingPage() {
                     <Link to="/student-registration"><button>Student Registration</button></Link>
                     <Link to="admin-login"><button >Admin Login</button></Link>
                 </div>
-
-
-
             </div>
-
         </div>
-
-
-
     )
 }
 

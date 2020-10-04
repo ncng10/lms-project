@@ -7,7 +7,6 @@ function Register({ setAuth }) {
         name: "",
         userRole: "Student"
     })
-
     const { email, password, name, userRole } = inputs;
     const onChange = (event) => {
         setInputs({ ...inputs, [event.target.name]: event.target.value })

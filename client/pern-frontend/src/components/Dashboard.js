@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
@@ -32,5 +30,4 @@ function Dashboard({ setAuth }) {
         </div >
     )
 }
-
 export default Dashboard

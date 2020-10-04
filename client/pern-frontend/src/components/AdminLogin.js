@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import './AdminLogin.scss'
 
 const AdminLogin = ({ setAuth }) => {
-
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     })
-
     const { email, password } = inputs;
     const onChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -16,9 +14,7 @@ const AdminLogin = ({ setAuth }) => {
     const [userRole, setRole] = useState('Admin')
     const setUserRole = (e) => {
         setRole(e.target.value)
-
     }
-
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
@@ -34,7 +30,6 @@ const AdminLogin = ({ setAuth }) => {
                 }
             );
             const parseRes = await response.json();
-
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
                 setAuth(true);
@@ -45,7 +40,6 @@ const AdminLogin = ({ setAuth }) => {
             console.error(err.message);
         }
     };
-
     return (
         <div className="loginContainer">
             <img className="logo" src={require('../logo_2.png')} alt="" />
@@ -60,7 +54,6 @@ const AdminLogin = ({ setAuth }) => {
                             onChange={e => onChange(e)} />
                     </label>
                 </div>
-
                 <div className="input">
                     <label>Password:
                     <br />
@@ -70,7 +63,6 @@ const AdminLogin = ({ setAuth }) => {
                             onChange={e => { onChange(e); console.log(userRole) }} />
                     </label>
                 </div>
-
                 <div className="inputSelect">
                     <center><label>Account Type: <br />
                         <select onChange={e => setUserRole(e)}>
@@ -78,7 +70,6 @@ const AdminLogin = ({ setAuth }) => {
                         </select>
                     </label></center>
                 </div>
-
                 <center><button type="submit" >Log In</button></center>
             </form>
         </div>

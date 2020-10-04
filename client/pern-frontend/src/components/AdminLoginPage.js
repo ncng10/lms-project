@@ -7,7 +7,6 @@ function AdminLoginPage(props) {
     return (
         <div className="landingPage">
             <div className="body">
-
                 <div className="authButtonsContainer">
                     <img className="logo" src={require('../logo_2.png')} alt="" />
                     <center><h2> Authentication Portal</h2></center>
@@ -21,11 +20,7 @@ function AdminLoginPage(props) {
                     timeout={600}
                     classNames="fade"><AdminLogin setAuth={props.setAuth} /></CSSTransition>
             </div>
-
         </div>
-
-
-
     )
 }
 
