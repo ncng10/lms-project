@@ -24,14 +24,14 @@ function EmployeeRoster() {
     return (
         <div className="employeeList">
             <center>
-                <h1> Employee Roster</h1>
+                <h1> Class Roster</h1>
             </center>
 
             <table>
                 <tbody >
                     <tr >
-                        <th >Employee Name</th>
-                        <th>Employee Email</th>
+                        <th >Student Name</th>
+                        <th>Student Email</th>
                     </tr>
                 </tbody>
             </table>
