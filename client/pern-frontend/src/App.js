@@ -5,24 +5,25 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-
+import { CSSTransition } from 'react-transition-group'
 import './App.css';
-import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard'
 import LandingPage from './components/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
-import AdminLogin from './components/AdminLogin';
 import EmployeeRoster from './components/AdminDashboardComponents/EmployeeRoster'
+import AdminLoginPage from './components/AdminLoginPage';
+import StudentLoginPage from './components/StudentLoginPage';
+import StudentRegistrationPage from './components/StudentRegistrationPage';
 function App() {
-
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-
+  //function that is passed via props to login and registration pages
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
+  //verifies jwt token and confirms authentication via is-verify route from nodejs
   async function isAuth() {
     try {
       const response = await fetch("http://localhost:5000/auth/is-verify",
@@ -37,38 +38,63 @@ function App() {
       console.log(err.message)
     }
   }
+
+  //checks authentication every page load so you stay logged in on page refresh
   useEffect(() => {
     isAuth()
   }, [])
 
-
+  //css transition
+  const [appearHome, setAppearHome] = useState(true);
   return (
     <Fragment>
       <Router>
         <Switch>
+          <Route exact path="/student-roster" component={EmployeeRoster} />
 
-          <Route exact path="/employee-roster" component={EmployeeRoster} />
+          {/* Renders landing page */}
+          <Route exact path="/" > <CSSTransition
+            in={appearHome}
+            appear={true}
+            timeout={600}
+            classNames="fade"><LandingPage /></CSSTransition></Route>
 
-          <Route exact path="/" component={LandingPage} />
+          {/* Renders admin login, if authenticated via login form, redirect to the admin dashboard */}
           <Route exact path="/admin-login" render={props => !isAuthenticated ? (
-            <AdminLogin {...props} setAuth={setAuth} />) : (
+            <CSSTransition
+              in={appearHome}
+              appear={true}
+              timeout={600}
+              classNames="fade"><AdminLoginPage {...props} setAuth={setAuth} /></CSSTransition>) : (
               <Redirect to="/admin-dashboard" />)} />
 
-          <Route exact path="/login" render={props => !isAuthenticated ? (
-            <Login {...props} setAuth={setAuth} />) : (
+          {/* Renders student registration form, if authenticated, redirect to the student dashboard */}
+          <Route exact path="/student-registration" render={props => !isAuthenticated ? (
+            <CSSTransition
+              in={appearHome}
+              appear={true}
+              timeout={600}
+              classNames="fade"><StudentRegistrationPage {...props} setAuth={setAuth} /></CSSTransition>) : (
               <Redirect to="/dashboard" />)} />
 
-          <Route exact path="/register" render={props => !isAuthenticated ? (
-            <Register {...props} setAuth={setAuth} />) : (
-              <Redirect to='/login' />)} />
+          {/* Renders student login form, if authenticated, redirect to the student dashboard */}
+          <Route exact path="/student-login" render={props => !isAuthenticated ? (
+            <CSSTransition
+              in={appearHome}
+              appear={true}
+              timeout={600}
+              classNames="fade"><StudentLoginPage {...props} setAuth={setAuth} /></CSSTransition>) : (
+              <Redirect to="/dashboard" />)} />
 
+          {/* While in dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/dashboard" render={props => isAuthenticated ? (
             <Dashboard {...props} setAuth={setAuth} />) : (
-              <Redirect to="/login" />)} />
+              <Redirect to="/" />)} />
 
+          {/* While in admin dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/admin-dashboard" render={props => isAuthenticated ? (
             <AdminDashboard {...props} setAuth={setAuth} />) : (
-              <Redirect to="/admin-login" />)} />
+              <Redirect to="/" />)} />
 
         </Switch>
       </Router>

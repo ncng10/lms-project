@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-
+import './LandingPage.scss'
 function Register({ setAuth }) {
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
         name: "",
-        userRole: "Employee"
+        userRole: "Student"
     })
 
     const { email, password, name, userRole } = inputs;
@@ -32,37 +32,47 @@ function Register({ setAuth }) {
         }
     }
     return (
-        <div>
+        <div className="registrationContainer">
+            <img className="logo" src={require('../logo_2.png')} alt="" />
+            <h2>Student Registration</h2>
             <form onSubmit={onSubmitForm}>
-                <label>Email:
-          <input type="email"
-                        required={true}
-                        name="email"
-                        value={email}
-                        onChange={(event) => onChange(event)} />
-                </label>
-                <label>Password:
-          <input type="password"
-                        required={true}
-                        minLength="6"
-                        name="password"
-                        value={password}
-                        onChange={(event) => onChange(event)} />
-                </label>
-                <label>Name/Username:
+                <div className="input">
+                    <label>Email:
+                    <br />
+                        <input name="email"
+                            value={email}
+                            type="text"
+                            onChange={e => onChange(e)} />
+                    </label>
+                </div>
+                <div className="input">
+                    <label>Password:
+                    <br />
+                        <input name="password"
+                            value={password}
+                            type="password"
+                            onChange={e => { onChange(e); console.log(userRole) }} />
+                    </label>
+                </div>
+                <div className="input">
+                    <label>Name/Username:
            <input
-                        required={true}
-                        type="text" name="name"
-                        value={name}
-                        onChange={(event) => onChange(event)} />
-                </label>
-                <label>
-                    Type:
-                    <select>
-                        <option value={userRole} defaultValue="Employee" >Employee</option>
-                    </select>
-                </label>
-                <button type="submit">Register</button>
+                            required={true}
+                            type="text" name="name"
+                            value={name}
+                            onChange={(event) => onChange(event)} />
+                    </label>
+                </div>
+                <div label="inputSelect">
+                    <center><label>
+                        Account Type:
+                        <br />
+                        <select>
+                            <option value={userRole} defaultValue="Student" >Student</option>
+                        </select>
+                    </label></center>
+                </div>
+                <center><button type="submit">Register</button></center>
             </form>
         </div>
     )

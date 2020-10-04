@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './AdminLogin.scss'
 
 const AdminLogin = ({ setAuth }) => {
 
@@ -23,7 +24,7 @@ const AdminLogin = ({ setAuth }) => {
         try {
             const body = { email, password, userRole };
             const response = await fetch(
-                "http://localhost:5000/auth/login",
+                "http://localhost:5000/auth/admin-login",
                 {
                     method: "POST",
                     headers: {
@@ -46,31 +47,41 @@ const AdminLogin = ({ setAuth }) => {
     };
 
     return (
-        <div>
-            <h2>Log into your account</h2>
+        <div className="loginContainer">
+            <img className="logo" src={require('../logo_2.png')} alt="" />
+            <h2>Administrator Login</h2>
             <form onSubmit={onSubmitForm}>
-                <label>Email:
-                <input name="email"
-                        value={email}
-                        type="text"
-                        onChange={e => onChange(e)} />
-                </label>
+                <div className="input">
+                    <label>Email:
+                    <br />
+                        <input name="email"
+                            value={email}
+                            type="text"
+                            onChange={e => onChange(e)} />
+                    </label>
+                </div>
 
-                <label>Password:
-                <input name="password"
-                        value={password}
-                        type="password"
-                        onChange={e => { onChange(e); console.log(userRole) }} />
-                </label>
-                <label>
-                    <select onChange={e => setUserRole(e)}>
-                        <option value='Admin' name="Admin" >Admin</option>
-                    </select>
-                </label>
-                <button type="submit" >Log In</button>
+                <div className="input">
+                    <label>Password:
+                    <br />
+                        <input name="password"
+                            value={password}
+                            type="password"
+                            onChange={e => { onChange(e); console.log(userRole) }} />
+                    </label>
+                </div>
+
+                <div className="inputSelect">
+                    <center><label>Account Type: <br />
+                        <select onChange={e => setUserRole(e)}>
+                            <option value='Admin' name="Admin" >Admin</option>
+                        </select>
+                    </label></center>
+                </div>
+
+                <center><button type="submit" >Log In</button></center>
             </form>
-
-        </div >
+        </div>
     )
 }
 

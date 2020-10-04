@@ -26,7 +26,7 @@ function Dashboard({ setAuth }) {
     })
     return (
         <div>
-            <h1>Employee Dashboard</h1>
+            <h1>Student Dashboard</h1>
             <h2>Hello, {name} ({role})</h2>
             <button onClick={() => { setAuth(false); removeToken(); }}>Log Out</button>
         </div >
