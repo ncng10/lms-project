@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './EmployeeRoster.scss'
 
 function EmployeeRoster() {
     const [employeeList, setEmployeeList] = useState([]);
@@ -22,10 +23,39 @@ function EmployeeRoster() {
     }, [])
     return (
         <div className="employeeList">
-            <h1> Employee Roster</h1>
-            {employeeList.map((employee) => (
-                <h1>{employee.user_name}</h1>
-            ))}
+            <center>
+                <h1> Employee Roster</h1>
+            </center>
+
+            <table>
+                <tbody >
+                    <tr >
+                        <th >Employee Name</th>
+                        <th>Employee Email</th>
+                    </tr>
+                </tbody>
+            </table>
+            {
+                employeeList.map((employee) => (
+                    <EmployeeListFormat employeeName={employee.user_name} employeeEmail={employee.user_email} />
+                ))
+            }
+        </div >
+    )
+}
+
+const EmployeeListFormat = (props) => {
+    return (
+        <div className="employeeRow">
+            <table>
+                <tbody>
+                    <tr>
+                        <td className="info">{props.employeeName}</td>
+                        <td className="info">{props.employeeEmail}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     )
 }

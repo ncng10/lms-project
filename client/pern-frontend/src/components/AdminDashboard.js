@@ -28,6 +28,13 @@ function AdminDashboard({ setAuth }) {
         <div className="adminDashboard">
             <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />
             <h4>Hello, {name} ({role})</h4>
+            <div className="categoryCards">
+                <div className="menuCard"></div>
+                <div className="menuCard"></div>
+                <div className="menuCard"></div>
+                <div className="menuCard"></div>
+                <div className="menuCard"></div>
+            </div>
         </div >
     )
 }
