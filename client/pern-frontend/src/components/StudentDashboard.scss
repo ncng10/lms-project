@@ -1,16 +1,10 @@
 $app-color: #dddce0;
 
 .dashboardBody {
-    height: 100vh;
+    height: 100%;
     background-color: $app-color;
-    overflow:hidden;
 }
 
-.topMenu {
-    background-color: $app-color;
-    width: 100%;
-    height: 100vh;
-}
 .studentNavBar {
     position: fixed;
     display: flex;
@@ -40,7 +34,7 @@ li {
     color: white;
     background-color:$app-color;
     float: right;
-    height: 100vh;
+    height: 10%;
     width: 10vw;
     display: flex;
     flex-direction: row;
@@ -97,15 +91,17 @@ li {
     flex-wrap: wrap;
     padding:40px;
     margin-left: 200px;
+    height: 250vh;
     display:flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 .courseCard {
     border-radius: 10px;
-    width: 265px;
-    height: 350px;
+    width: 250px;
+    height: 335px;
     background-color: white;
     margin-top: 35px;
+    margin-left: 10px;
     display: flex;
     flex-direction: column; 
     justify-content: space-around;

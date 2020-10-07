@@ -9,12 +9,12 @@ import { CSSTransition } from 'react-transition-group'
 import './App.css';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard'
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/pages/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
 import EmployeeRoster from './components/AdminDashboardComponents/EmployeeRoster'
-import AdminLoginPage from './components/AdminLoginPage';
-import StudentLoginPage from './components/StudentLoginPage';
-import StudentRegistrationPage from './components/StudentRegistrationPage';
+import AdminLoginPage from './components/pages/AdminLoginPage'
+import StudentLoginPage from './components/pages/StudentLoginPage';
+import StudentRegistrationPage from './components/pages/StudentRegistrationPage';
 
 
 function App() {
