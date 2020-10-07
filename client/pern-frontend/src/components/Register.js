@@ -32,7 +32,7 @@ function Register({ setAuth, setUserRole }) {
     }
     return (
         <div className="registrationContainer">
-            <img className="logo" src={require('../logo_2.png')} alt="" />
+            <img className="logo" src={require('./images/logo_2.png')} alt="" />
             <h2>Student Registration</h2>
             <form onSubmit={onSubmitForm}>
                 <div className="input">

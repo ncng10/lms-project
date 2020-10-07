@@ -23,6 +23,20 @@ router.get('/courses', authorization, async (req, res) => {
             req.user
         ])
         res.json(courses.rows);
+        console.log(req.user)
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+router.post('/enroll', authorization, async (req, res) => {
+    try {
+        const { course_id } = req.body;
+        const enrollInCourse = await pool.query(
+            "INSERT INTO enrollment(course_id, user_id) VALUES($1,$2)",
+            [course_id, req.user]
+        );
+        res.json(enrollInCourse.rows);
     } catch (error) {
         console.log(error.message)
     }

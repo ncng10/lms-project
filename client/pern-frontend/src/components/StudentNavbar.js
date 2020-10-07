@@ -3,7 +3,7 @@ import './StudentDashboard.scss'
 function StudentNavbar() {
     return (
         <div className="studentNavBar">
-            <img className="navLogo" src={require('../logo-smaller.png')} alt="" />
+            <img className="navLogo" src={require('./images/logo-smaller.png')} alt="" />
             <ul >
                 <li ><a style={{ textDecoration: "none", color: 'black' }} href="/dashboard">Dashboard</a></li>
                 <li><a style={{ textDecoration: "none", color: 'black' }} href="#">Course List</a></li>

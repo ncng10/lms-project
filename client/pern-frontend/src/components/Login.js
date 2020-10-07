@@ -40,7 +40,7 @@ const Login = ({ setAuth }) => {
     };
     return (
         <div className="loginContainer">
-            <img className="logo" src={require('../logo_2.png')} alt="" />
+            <img className="logo" src={require('./images/logo_2.png')} alt="" />
             <h2>Student Login</h2>
             <form onSubmit={onSubmitForm}>
                 <div className="input">

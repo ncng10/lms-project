@@ -10,7 +10,7 @@ function CourseCard(props) {
     return (
         <div style={{ backgroundColor: randomColor }} className="courseCard">
             <div className="courseImageSection">
-                <img className="courseImage" src={require('../art-icon.png')} alt="" />
+                <img className="courseImage" src={require('./images/art-icon.png')} alt="" />
             </div>
             <div style={{ backgroundColor: 'white' }} className="courseInfoSection">
                 <h2>{props.courseName}</h2>
