@@ -6,7 +6,7 @@ function AdminDashboard({ setAuth }) {
     const [role, setRole] = useState("");
     async function getName() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/",
+            const response = await fetch("http://localhost:5000/admin-dashboard/",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -24,6 +24,7 @@ function AdminDashboard({ setAuth }) {
     useEffect(() => {
         getName()
     })
+
     return (
         <div className="adminDashboard">
             <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />

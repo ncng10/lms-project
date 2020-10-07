@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import AdminLogin from './AdminLogin'
 import "./LandingPage.scss"
 import { CSSTransition } from 'react-transition-group'
+
 function AdminLoginPage(props) {
     return (
         <div className="landingPage">
@@ -18,7 +19,7 @@ function AdminLoginPage(props) {
                     in={AdminLoginPage}
                     appear={true}
                     timeout={600}
-                    classNames="fade"><AdminLogin setAuth={props.setAuth} /></CSSTransition>
+                    classNames="fade"><AdminLogin setAuth={props.setAuth} setAdminAuth={props.setAdminAuth} /></CSSTransition>
             </div>
         </div>
     )

@@ -1,0 +1,135 @@
+$app-color: #dddce0;
+
+.dashboardBody {
+    height: 100vh;
+    background-color: $app-color;
+    overflow:hidden;
+}
+
+.topMenu {
+    background-color: $app-color;
+    width: 100%;
+    height: 100vh;
+}
+.studentNavBar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: white;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius:42px;
+    border-bottom-right-radius:42px;
+    .navLogo {
+    width: 70px;
+    height: 155px;
+    margin-bottom: 70px;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 70px;
+    font-weight: bold;
+}
+}
+
+.studentTopBar {
+    color: white;
+    background-color:$app-color;
+    float: right;
+    height: 100vh;
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    .userIcons {
+        float: right;
+        margin-top: 5px;
+        margin-right: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+    .mailIcon {
+        margin-right:15px;
+        margin-top:-3px;
+    }
+    .letterIcon {
+        color: black;
+        width: 40px;
+        height: 40px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+}
+
+.popupMenu {
+    color: black;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 15px;
+    margin-left: -295px;
+    margin-top: 50px;
+    position: absolute;
+    h3 {
+        margin-top: 15px;
+    }
+    .pointer{
+        border-bottom:solid 10px #f2f2f2;
+        border-left: solid 5px transparent;
+        border-right: solid 5px transparent;
+        position:absolute;
+        width: 0;
+        height: 0;
+        top: -10px;
+        right: 20px;
+    }
+}
+.courseCardsContainer {
+    background-color: $app-color;
+    flex-wrap: wrap;
+    padding:40px;
+    margin-left: 200px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+.courseCard {
+    border-radius: 10px;
+    width: 265px;
+    height: 350px;
+    background-color: white;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    overflow:hidden;
+.courseImageSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .courseImage {
+        height: 85px;
+        margin-top: 25px;;
+    }
+}
+.courseInfoSection {
+    margin-top: 50px;
+    height: 400px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+}
+}

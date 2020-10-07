@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './LandingPage.scss'
-function Register({ setAuth }) {
+function Register({ setAuth, setUserRole }) {
     const [inputs, setInputs] = useState({
         email: "",
         password: "",

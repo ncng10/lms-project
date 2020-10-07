@@ -5,6 +5,7 @@ const jwtGenerator = require('../utils/jwtGenerator');
 const validInfo = require('../middleware/validinfo');
 const authorization = require('../middleware/authorization');
 
+
 //register
 router.post('/register', validInfo, async (req, res) => {
     try {
@@ -37,8 +38,8 @@ router.post('/register', validInfo, async (req, res) => {
 router.post('/login', validInfo, async (req, res) => {
     try {
         const { email, password, userRole } = req.body;
-        const user = await pool.query("SELECT * FROM users WHERE user_email = $1 AND user_role ='Student' ", [
-            email
+        const user = await pool.query("SELECT * FROM users WHERE user_email = $1 AND user_role =$2", [
+            email, userRole
         ]);
         if (user.rows.length === 0) {
             return res.status(401).json('Password and/or email is incorrect does not exist')
@@ -59,8 +60,8 @@ router.post('/login', validInfo, async (req, res) => {
 router.post('/admin-login', validInfo, async (req, res) => {
     try {
         const { email, password, userRole } = req.body;
-        const user = await pool.query("SELECT * FROM users WHERE user_email = $1 AND user_role ='Admin' ", [
-            email
+        const user = await pool.query("SELECT * FROM users WHERE user_email = $1 AND user_role =$2 ", [
+            email, userRole
         ]);
         if (user.rows.length === 0) {
             return res.status(401).json('Password and/or email is incorrect does not exist')
@@ -85,6 +86,6 @@ router.get('/is-verify', authorization, async (req, res) => {
         console.log(err.message);
         res.status(500).send("server error");
     }
-})
+});
 
 module.exports = router;

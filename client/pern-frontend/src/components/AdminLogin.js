@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AdminLogin.scss'
 
-const AdminLogin = ({ setAuth }) => {
+const AdminLogin = ({ setAuth, setAdminAuth }) => {
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
@@ -33,8 +33,10 @@ const AdminLogin = ({ setAuth }) => {
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
                 setAuth(true);
+                setAdminAuth(true);
             } else {
                 setAuth(false);
+                setAdminAuth(false);
             }
         } catch (err) {
             console.error(err.message);

@@ -15,7 +15,32 @@ import EmployeeRoster from './components/AdminDashboardComponents/EmployeeRoster
 import AdminLoginPage from './components/AdminLoginPage';
 import StudentLoginPage from './components/StudentLoginPage';
 import StudentRegistrationPage from './components/StudentRegistrationPage';
+
+
 function App() {
+
+  //gets role of user logged in, does not allow student to log in as admin 
+  const [adminRole, setAdminRole] = useState(false);
+  async function getRole() {
+    try {
+      const response = await fetch("http://localhost:5000/dashboard/",
+        {
+          method: "GET",
+          headers: { token: localStorage.token }
+        });
+      const parseRes = await response.json();
+      parseRes.user_role === "Admin" ? setAdminRole(true) : setAdminRole(false);
+      console.log(parseRes.user_role)
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+  const setAdminAuth = (boolean) => {
+    setAdminRole(boolean);
+  };
+
+
+  //react hook that sets the status of auth from jwt token jwt token as valid
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   //function that is passed via props to login and registration pages
@@ -41,8 +66,11 @@ function App() {
 
   //checks authentication every page load so you stay logged in on page refresh
   useEffect(() => {
-    isAuth()
+    isAuth();
   }, [])
+
+
+
 
   //css transition
   const [appearHome, setAppearHome] = useState(true);
@@ -59,13 +87,14 @@ function App() {
             timeout={600}
             classNames="fade"><LandingPage /></CSSTransition></Route>
 
+
           {/* Renders admin login, if authenticated via login form, redirect to the admin dashboard */}
           <Route exact path="/admin-login" render={props => !isAuthenticated ? (
             <CSSTransition
               in={appearHome}
               appear={true}
               timeout={600}
-              classNames="fade"><AdminLoginPage {...props} setAuth={setAuth} /></CSSTransition>) : (
+              classNames="fade"><AdminLoginPage {...props} setAuth={setAuth} setAdminAuth={setAdminAuth} /></CSSTransition>) : (
               <Redirect to="/admin-dashboard" />)} />
 
           {/* Renders student registration form, if authenticated, redirect to the student dashboard */}
@@ -89,12 +118,12 @@ function App() {
           {/* While in dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/dashboard" render={props => isAuthenticated ? (
             <Dashboard {...props} setAuth={setAuth} />) : (
-              <Redirect to="/" />)} />
+              <Redirect to="/student-login" />)} />
 
           {/* While in admin dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/admin-dashboard" render={props => isAuthenticated ? (
             <AdminDashboard {...props} setAuth={setAuth} />) : (
-              <Redirect to="/" />)} />
+              <Redirect to="/admin-login" />)} />
 
         </Switch>
       </Router>

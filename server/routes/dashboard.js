@@ -14,6 +14,18 @@ router.get('/', authorization, async (req, res) => {
         console.log(err.message);
         res.status(500).json("Server Error");
     }
+});
+
+
+router.get('/courses', authorization, async (req, res) => {
+    try {
+        const courses = await pool.query("SELECT user_name, user_role,user_email,courses.course_name, courses.course_id, users.user_id, enrollment.user_id FROM users LEFT JOIN enrollment ON users.user_id = enrollment.user_id LEFT JOIN courses ON courses.course_id = enrollment.course_id WHERE enrollment.user_id =$1", [
+            req.user
+        ])
+        res.json(courses.rows);
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 module.exports = router;
