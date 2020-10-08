@@ -35,12 +35,13 @@ function StudentEnroll() {
 
 
     return (
-        // onSubmit={e => onSubmitForm(e)}
-        <div className="studentEnrollment">
-            <form >
+
+        <div onSubmit={e => onSubmitForm(e)} className="studentEnrollment">
+            <form style={{ backgroundColor: 'white' }}>
                 <input onChange={e => { onChange(e); }} name="course_id" value={course_id} type="text" placeholder="Course ID">
                 </input>
-                <div><span>Enroll in a class</span></div>
+                <div style={{ backgroundColor: 'white' }}><span style={{ backgroundColor: 'white' }}>Enroll in a class</span></div>
+                <button type="submit">Enroll</button>
             </form>
 
         </div>

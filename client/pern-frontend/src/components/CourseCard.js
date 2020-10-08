@@ -16,7 +16,7 @@ function CourseCard(props) {
             <div style={{ backgroundColor: 'white' }} className="courseInfoSection">
                 <h2>{props.courseName}</h2>
                 <h3>Course ID: {props.course_id}</h3>
-                <h3></h3>
+                <h3>Instructor: {props.courseInstructor}</h3>
             </div>
         </div>
     )

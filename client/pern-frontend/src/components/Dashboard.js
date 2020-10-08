@@ -55,16 +55,19 @@ function Dashboard({ setAuth }) {
     return (
         <div className="dashboardBody">
             <div className="topMenu">
+                <center><div>
+                    <StudentTopBar setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
+            </div >
+
+            <div className="sideBarMenuStudent">
                 {navBarActive ?
                     <div> <StudentNavbar /></div> : null}
-                <center><div><StudentTopBar setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
-            </div >
+            </div>
             <center>
                 <div className="courseCardsContainer">
                     {courses.map((course) => (
-                        <CourseCard course_id={course.course_id} courseName={course.course_name} />
+                        <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} />
                     ))}
-                    <div style={{ fontSize: 15 }} className="courseCard"><h1><StudentEnroll /></h1></div>
                 </div>
             </center>
         </div>
