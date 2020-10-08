@@ -11,10 +11,11 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard'
 import LandingPage from './components/pages/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
-import EmployeeRoster from './components/AdminDashboardComponents/EmployeeRoster'
+import CourseListPage from './components/pages/CourseListPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StudentLoginPage from './components/pages/StudentLoginPage';
 import StudentRegistrationPage from './components/pages/StudentRegistrationPage';
+import StudentNavbar from './components/StudentNavbar';
 
 
 function App() {
@@ -78,7 +79,7 @@ function App() {
     <Fragment>
       <Router>
         <Switch>
-          <Route exact path="/student-roster" component={EmployeeRoster} />
+          <Route exact path="/course-list" component={CourseListPage} />
 
           {/* Renders landing page */}
           <Route exact path="/" > <CSSTransition

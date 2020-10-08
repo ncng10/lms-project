@@ -4,14 +4,16 @@ import './StudentDashboard.scss'
 import StudentNavbar from './StudentNavbar';
 import StudentTopBar from './StudentTopBar';
 import StudentEnroll from './StudentEnroll';
+
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
     const [courses, setCourses] = useState([]);
     const [navBarActive, setNavBarActive] = useState(true);
+
     async function getCourses() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/courses",
+            const response = await fetch("http://localhost:5000/dashboard/enrolled-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -23,10 +25,6 @@ function Dashboard({ setAuth }) {
             console.log(err.message)
         }
     }
-    useEffect(() => {
-        getCourses();
-    }, []);
-
 
     async function getName() {
         try {
@@ -45,9 +43,15 @@ function Dashboard({ setAuth }) {
     function removeToken() {
         localStorage.removeItem('token')
     }
+
     useEffect(() => {
         getName()
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        getCourses();
+    }, []);
+
     return (
         <div className="dashboardBody">
             <div className="topMenu">
@@ -58,7 +62,7 @@ function Dashboard({ setAuth }) {
             <center>
                 <div className="courseCardsContainer">
                     {courses.map((course) => (
-                        <CourseCard courseName={course.course_name} />
+                        <CourseCard course_id={course.course_id} courseName={course.course_name} />
                     ))}
                     <div style={{ fontSize: 15 }} className="courseCard"><h1><StudentEnroll /></h1></div>
                 </div>

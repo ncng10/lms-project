@@ -1,6 +1,7 @@
 import React from 'react'
 
 function CourseCard(props) {
+
     const colorPallete = [
         '#FF9035', 'rgb(251,211,150)',
         '#5F8CFF', 'rgb(240,167,167)',
@@ -14,8 +15,8 @@ function CourseCard(props) {
             </div>
             <div style={{ backgroundColor: 'white' }} className="courseInfoSection">
                 <h2>{props.courseName}</h2>
-                <h3>Professor: Nolan Cong, PhD</h3>
-                <h3>Course #: 1120291</h3>
+                <h3>Course ID: {props.course_id}</h3>
+                <h3></h3>
             </div>
         </div>
     )

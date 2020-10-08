@@ -17,7 +17,7 @@ router.get('/', authorization, async (req, res) => {
 });
 
 
-router.get('/courses', authorization, async (req, res) => {
+router.get('/enrolled-courses', authorization, async (req, res) => {
     try {
         const courses = await pool.query("SELECT user_name, user_role,user_email,courses.course_name, courses.course_id, users.user_id, enrollment.user_id FROM users LEFT JOIN enrollment ON users.user_id = enrollment.user_id LEFT JOIN courses ON courses.course_id = enrollment.course_id WHERE enrollment.user_id =$1", [
             req.user
@@ -42,5 +42,30 @@ router.post('/enroll', authorization, async (req, res) => {
     }
 });
 
+router.get('/all-courses', authorization, async (req, res) => {
+    try {
+        const allCourses = await pool.query(
+            "SELECT * FROM courses"
+        )
+        res.json(allCourses.rows)
+    } catch (error) {
+        console.log(error.message)
+    }
+});
 
+router.delete('/enrolled-courses/delete-course/:id', authorization, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteCourse = await pool.query(
+            "DELETE FROM courses WHERE course_id = $1 and user_id = $2 RETURNING *",
+            [id, req.user]
+        )
+        if (deleteCourse.rows.length === 0) {
+            res.json("You cannot delete this course");
+        }
+        res.json("Course Deleted");
+    } catch (error) {
+
+    }
+})
 module.exports = router;
