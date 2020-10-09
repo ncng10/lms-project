@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import StudentNavbar from '../StudentNavbar';
+import './CourseListPage.scss'
 function CourseListPage() {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [availableCourses, setAvailableCourses] = useState([]);
@@ -10,7 +11,6 @@ function CourseListPage() {
                     method: "GET",
                     headers: { token: localStorage.token }
                 });
-
             const parseResCourse = await response.json();
             setEnrolledCourses(parseResCourse);
             console.log(parseResCourse);
@@ -25,7 +25,8 @@ function CourseListPage() {
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
-                });
+                })
+
 
             const parseResCourse = await response.json();
             setAvailableCourses(parseResCourse);
@@ -71,36 +72,41 @@ function CourseListPage() {
             const parseRes = await response.json();
             console.log(parseRes)
         } catch (err) {
-            console.error('You are already enrolled in this class.');
+            alert('Choose a valid course or one you are not enrolled in.');
         }
     };
 
     return (
         <div className="courseListPage">
-            <div className="currentlyEnrolled">
-                <h3>Courses Currently Enroll In</h3>
-                <ul>
-                    {enrolledCourses.map((course) => (
-                        <li>{course.course_name} {course.course_id}</li>
-                    ))}
-                </ul>
-            </div>
-            <div className="openEnrollmentClasses">
-                <h3>Courses Available To Enroll In</h3>
-                <ul>
-                    {availableCourses.map((course) => (
-                        <li>{course.course_name} {course.course_id}</li>
-                    ))}
-                </ul>
-                <form onSubmit={e => handleEnrollment(e)}>
-                    <select name="course_id" value={course_id} onChange={e => { onChange(e); }}>
-                        <option selected disabled value=''></option>
-                        {availableCourses.map((course) => (
-                            <option name={course_id} value={course.course_id}>{course.course_name} {course.course_id}</option>
+            <StudentNavbar />
+            <div className="courseListContainer">
+                <div className="currentlyEnrolled">
+                    <h3>Courses Currently Enrolled In</h3>
+                    <ul>
+                        {enrolledCourses.map((course) => (
+                            <li>{course.course_name} {course.course_id}</li>
                         ))}
-                    </select>
-                    <button type="submit">Enroll In This Class</button>
-                </form>
+                    </ul>
+                </div>
+                <div className="openEnrollmentClasses">
+                    <h3>Courses Available To Enroll In</h3>
+                    <ul>
+                        {availableCourses.map((course) => (
+                            <li>{course.course_name} {course.course_id}</li>
+                        ))}
+                    </ul>
+                    <div className="selectContainer">
+                        <form onSubmit={e => handleEnrollment(e)}>
+                            <select name="course_id" value={course_id} onChange={e => { onChange(e); }}>
+                                <option defaultValue disabled value=''></option>
+                                {availableCourses.map((course) => (
+                                    <option name={course_id} value={course.course_id}>{course.course_name} {course.course_id}</option>
+                                ))}
+                            </select>
+                            <button type="submit">Enroll In This Class</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     )

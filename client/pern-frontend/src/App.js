@@ -16,6 +16,7 @@ import AdminLoginPage from './components/pages/AdminLoginPage'
 import StudentLoginPage from './components/pages/StudentLoginPage';
 import StudentRegistrationPage from './components/pages/StudentRegistrationPage';
 import StudentNavbar from './components/StudentNavbar';
+import CourseHomePage from './components/pages/CourseHomePage';
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
     <Fragment>
       <Router>
         <Switch>
+
           <Route exact path="/course-list" component={CourseListPage} />
 
           {/* Renders landing page */}
@@ -125,6 +127,8 @@ function App() {
           <Route exact path="/admin-dashboard" render={props => isAuthenticated ? (
             <AdminDashboard {...props} setAuth={setAuth} />) : (
               <Redirect to="/admin-login" />)} />
+
+          <Route exact-path="course/:course_id" component={CourseHomePage} />
 
         </Switch>
       </Router>

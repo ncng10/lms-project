@@ -1,0 +1,47 @@
+$list-spacing: 12px;
+
+.courseListContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    h3 {
+        border-bottom: 1px solid black;
+        margin-bottom: $list-spacing;
+    }
+    ul {
+    list-style-type: none;
+    }
+    .currentlyEnrolled {
+        margin-top: 75px;
+        li {
+            margin-bottom: $list-spacing;;
+        }
+    }
+    .openEnrollmentClasses {
+        margin-top: 75px;
+        li {
+            margin-bottom: $list-spacing;;
+        }
+        .selectContainer {
+            select {
+                cursor: pointer;
+                width: 125px;
+                border: none;
+                border-radius: 10px;
+                margin-right: 12px;
+                outline:none;
+            }
+            button {
+                cursor: pointer;
+                width: 125px;
+                height: 25px;
+                color: black;
+                border-radius: 15px;
+                background-color: rgba(129, 185, 231, 0.767);
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}

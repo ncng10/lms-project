@@ -52,7 +52,8 @@ router.post('/enroll', authorization, async (req, res) => {
         res.json(enrollInCourse.rows);
     } catch (error) {
         console.log(error.message)
-        console.log('You are already enrolled in this class')
+        res.send('error')
+
     }
 });
 

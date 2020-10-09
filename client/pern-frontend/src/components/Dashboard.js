@@ -4,6 +4,7 @@ import './StudentDashboard.scss'
 import StudentNavbar from './StudentNavbar';
 import StudentTopBar from './StudentTopBar';
 import StudentEnroll from './StudentEnroll';
+import { Link } from 'react-router-dom'
 
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
@@ -66,7 +67,8 @@ function Dashboard({ setAuth }) {
             <center>
                 <div className="courseCardsContainer">
                     {courses.map((course) => (
-                        <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} />
+                        <Link to={`/course/${course.course_id}`}>
+                            <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
                     ))}
                 </div>
             </center>
