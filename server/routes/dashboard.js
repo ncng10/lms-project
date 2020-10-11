@@ -82,5 +82,8 @@ router.delete('/enrolled-courses/delete-course/:id', authorization, async (req, 
     } catch (error) {
 
     }
-})
+});
+
+
+
 module.exports = router;

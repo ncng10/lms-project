@@ -67,7 +67,7 @@ function Dashboard({ setAuth }) {
             <center>
                 <div className="courseCardsContainer">
                     {courses.map((course) => (
-                        <Link to={`/course/${course.course_id}`}>
+                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
                             <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
                     ))}
                 </div>
