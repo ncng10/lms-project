@@ -32,9 +32,7 @@ router.get('/enrolled-courses', authorization, async (req, res) => {
 router.get('/available-courses', authorization, async (req, res) => {
     try {
         const courses = await pool.query(
-            "SELECT DISTINCT user_name, user_role,user_email,courses.course_name, courses.course_instructor, courses.course_id, users.user_id, enrollment.user_id FROM users LEFT JOIN enrollment ON users.user_id = enrollment.user_id LEFT JOIN courses ON courses.course_id = enrollment.course_id WHERE enrollment.user_id =$1", [
-            req.user
-        ])
+            "SELECT * FROM courses")
         res.json(courses.rows);
         console.log(req.user)
     } catch (error) {
@@ -84,6 +82,16 @@ router.delete('/enrolled-courses/delete-course/:id', authorization, async (req, 
     }
 });
 
-
+router.get('/files', authorization, async (req, res) => {
+    try {
+        const files = await pool.query(
+            "SELECT * FROM files WHERE user_id = $1", [req.user]
+        )
+        res.json(files.rows);
+    } catch (error) {
+        console.log(error.message);
+        res.send("Cant retrieve files")
+    }
+})
 
 module.exports = router;

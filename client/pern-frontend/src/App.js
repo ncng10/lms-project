@@ -17,6 +17,7 @@ import StudentLoginPage from './components/pages/StudentLoginPage';
 import StudentRegistrationPage from './components/pages/StudentRegistrationPage';
 import StudentNavbar from './components/StudentNavbar';
 import CourseHomePage from './components/pages/CourseHomePage';
+import FilesPage from './components/pages/FilesPage';
 
 
 function App() {
@@ -128,7 +129,9 @@ function App() {
             <AdminDashboard {...props} setAuth={setAuth} />) : (
               <Redirect to="/admin-login" />)} />
 
-          <Route exact-path="course/:course_id" component={CourseHomePage} />
+          <Route exact path="/course/:course_id" component={CourseHomePage} />
+
+          <Route exact path="/files" component={FilesPage} />
 
         </Switch>
       </Router>

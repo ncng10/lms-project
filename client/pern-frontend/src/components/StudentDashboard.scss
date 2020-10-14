@@ -41,7 +41,6 @@ li {
     font-size:12px;
     background-color: $background-color-not-app;
 }
-
 }
 
 .studentTopBar {
@@ -174,4 +173,75 @@ li {
     .enrollInClassSpan {
         background-color: $background-color-not-app;
     }
+}
+
+
+@media (max-width: 600px) {
+    .dashboardBody {
+        overflow: hidden;
+        background-color:#ddf1e7bd ;
+    }
+    .studentNavBar {
+        a {
+            font-size: 15px;
+        }
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        margin-top: 730px;
+        .navLogo {
+            display: none;
+        }
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        li {
+            margin-left: 15px;
+            margin-right: 25px;;
+            margin-top:10px;
+        }
+    }
+    .courseCardsContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: -70px;
+        margin-left: 45px;
+        margin-top: 15px;
+        .courseCard {
+            width: 100%;
+            height: 150px;
+            .courseImageSection {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .courseImage {
+                    display: none;
+                }
+            }
+            .courseInfoSection {
+                margin-top: 20px;
+                height: 400px;
+                width:100%;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                h2 {
+                    margin-top: 10px;
+                }
+                h3 {
+                }
+            }
+        }
+    }
+    .studentTopBar {
+        display: none;
+    }
+
 }

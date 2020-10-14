@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './StudentDashboard.scss'
 function CourseCard(props) {
 
     const colorPallete = [

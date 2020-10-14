@@ -8,6 +8,6 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('enroll in new class', () => {
     it('handles submit to enroll in new course', () => {
-
+        
     })
 })

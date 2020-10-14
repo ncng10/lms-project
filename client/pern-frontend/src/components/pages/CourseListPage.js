@@ -84,7 +84,7 @@ function CourseListPage() {
                     <h3>Courses Currently Enrolled In</h3>
                     <ul>
                         {enrolledCourses.map((course) => (
-                            <li>{course.course_name} {course.course_id}</li>
+                            <li>{course.course_name} / Course #: {course.course_id}</li>
                         ))}
                     </ul>
                 </div>
@@ -92,15 +92,17 @@ function CourseListPage() {
                     <h3>Courses Available To Enroll In</h3>
                     <ul>
                         {availableCourses.map((course) => (
-                            <li>{course.course_name} {course.course_id}</li>
+                            <li>{course.course_name} / Course #: {course.course_id}</li>
                         ))}
                     </ul>
+                    <br />
                     <div className="selectContainer">
+                        <h4>Enroll in a Course:</h4>
                         <form onSubmit={e => handleEnrollment(e)}>
                             <select name="course_id" value={course_id} onChange={e => { onChange(e); }}>
                                 <option defaultValue disabled value=''></option>
                                 {availableCourses.map((course) => (
-                                    <option name={course_id} value={course.course_id}>{course.course_name} {course.course_id}</option>
+                                    <option name={course_id} value={course.course_id}>{course.course_name} / Course #: {course.course_id}</option>
                                 ))}
                             </select>
                             <button type="submit">Enroll In This Class</button>

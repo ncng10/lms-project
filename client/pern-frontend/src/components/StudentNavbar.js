@@ -17,7 +17,7 @@ function StudentNavbar() {
                     <li>
                         <center><div><BiListUl color="black" fontSize="40" /></div></center>
                         <a style={{ textDecoration: "none", color: 'black' }}>
-                            Course List
+                            Courses
                             </a>
                     </li>
                 </Link>

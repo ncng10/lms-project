@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './StudentDashboard.scss'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { BiFile, BiEdit, BiTask, BiLogOut } from "react-icons/bi";
+import { Link } from 'react-router-dom';
+
 function StudentTopBar(props) {
     const user = props.name;
     let firstLetter = user.charAt(0).toUpperCase();
@@ -32,7 +34,7 @@ function StudentTopBar(props) {
                             <h3>Hello, {props.name} ({props.role})</h3>
                             <div className="topMenuLinks">
                                 <div className="filesTopMenu">
-                                    <div><BiFile fontSize="40" /></div>
+                                    <Link to="/files"><div><BiFile fontSize="40" /></div></Link>
                                     <a><span>Files</span></a>
                                 </div>
                                 <div className="editProfileTopMenu">
