@@ -4,9 +4,17 @@ import './FilesPage.scss'
 function FilesPage() {
     const [filesList, setFilesList] = useState([]);
     const [formActive, setFormActive] = useState(false);
+    const [inputs, setInputs] = useState({
+        file_upload: "",
+        fileDescription: "",
+    })
+    const { file_upload, fileDescription } = inputs;
+    const onChange = (e) => {
+        setInputs({ ...inputs, [e.target.name]: e.target.value });
+    }
     const getFiles = async () => {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/files",
+            const response = await fetch("http://localhost:5000/course-page/files",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -16,6 +24,28 @@ function FilesPage() {
             console.log(parseRes);
         } catch (error) {
             console.log(error.message)
+        }
+    }
+
+    const uploadFile = async (e) => {
+        e.preventDefault();
+        try {
+            const body = { file_upload, fileDescription };
+            const response = await fetch(
+                "http://localhost:5000/course-page/upload-file",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        token: localStorage.token
+                    },
+                    body: JSON.stringify(body)
+                }
+            );
+            const parseRes = await response.json();
+            console.log(parseRes)
+        } catch (error) {
+            console.log(error.message);
         }
     }
 
@@ -38,16 +68,17 @@ function FilesPage() {
                 <button onClick={() => setFormActive(true)} className="addAFileButton">Add a File</button>
                 <div className={formActive ? "addAFileForm" : "formNotActive"}>
                     <button className="closeFormButton" onClick={() => setFormActive(false)}>X</button>
-                    <form>
+                    <form onSubmit={e => uploadFile(e)}>
                         <label>
                             File Link:
-                            <input type="text" />
+                            <input onChange={e => { onChange(e); }} type="text" name="file_upload" value={file_upload} />
                         </label>
                         <br />
                         <label>
                             File Name/Description:
-                            <input type="text" />
+                            <input onChange={e => { onChange(e); }} type="text" name="fileDescription" value={fileDescription} />
                         </label>
+                        <button>Add This File</button>
                     </form>
                 </div>
             </div>

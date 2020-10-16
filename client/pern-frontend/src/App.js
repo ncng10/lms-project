@@ -129,8 +129,10 @@ function App() {
             <AdminDashboard {...props} setAuth={setAuth} />) : (
               <Redirect to="/admin-login" />)} />
 
-          <Route exact path="/course/:course_id" component={CourseHomePage} />
 
+          {/* loads page with course materials */}
+          <Route exact path="/course/:courseID" component={CourseHomePage} />
+          {/* loads page with user files */}
           <Route exact path="/files" component={FilesPage} />
 
         </Switch>

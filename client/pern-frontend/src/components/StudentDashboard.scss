@@ -129,6 +129,7 @@ li {
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-top: -700px;
 .courseCard {
     border-radius: 10px;
     width: 250px;
@@ -146,8 +147,9 @@ li {
     align-items: center;
     justify-content: center;
     .courseImage {
-        height: 85px;
+        height: 100%;
         margin-top: 25px;;
+        display: none;
     }
 }
 .courseInfoSection {
@@ -187,7 +189,7 @@ li {
         }
         position: fixed;
         width: 100%;
-        height: 100px;
+        height: 125px;
         margin-top: 730px;
         .navLogo {
             display: none;
@@ -211,7 +213,7 @@ li {
         margin-left: 45px;
         margin-top: 15px;
         .courseCard {
-            width: 100%;
+            width: 200px;
             height: 150px;
             .courseImageSection {
                 width: 100%;

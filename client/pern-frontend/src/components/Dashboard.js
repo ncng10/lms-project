@@ -64,14 +64,12 @@ function Dashboard({ setAuth }) {
                 {navBarActive ?
                     <div> <StudentNavbar /></div> : null}
             </div>
-            <center>
-                <div className="courseCardsContainer">
-                    {courses.map((course) => (
-                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
-                            <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
-                    ))}
-                </div>
-            </center>
+            <div className="courseCardsContainer">
+                {courses.map((course) => (
+                    <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
+                        <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
+                ))}
+            </div>
         </div>
     )
 }
