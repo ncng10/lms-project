@@ -6,7 +6,7 @@ function AdminDashboard({ setAuth }) {
     const [role, setRole] = useState("");
     async function getName() {
         try {
-            const response = await fetch("http://localhost:5000/admin-dashboard/",
+            const response = await fetch("http://localhost:5000/dashboard/admin-verif",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -24,20 +24,25 @@ function AdminDashboard({ setAuth }) {
     useEffect(() => {
         getName()
     })
-
-    return (
-        <div className="adminDashboard">
-            <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />
-            <h4>Hello, {name} ({role})</h4>
-            <div className="categoryCards">
-                <div className="menuCard"></div>
-                <div className="menuCard"></div>
-                <div className="menuCard"></div>
-                <div className="menuCard"></div>
-                <div className="menuCard"></div>
-            </div>
-        </div >
-    )
+    if (name === "") {
+        return (
+            <h1>hi</h1>
+        )
+    } else {
+        return (
+            <div className="adminDashboard">
+                <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />
+                <h4>Hello, {name} ({role})</h4>
+                <div className="categoryCards">
+                    <div className="menuCard"></div>
+                    <div className="menuCard"></div>
+                    <div className="menuCard"></div>
+                    <div className="menuCard"></div>
+                    <div className="menuCard"></div>
+                </div>
+            </div >
+        )
+    }
 }
 
 export default AdminDashboard
