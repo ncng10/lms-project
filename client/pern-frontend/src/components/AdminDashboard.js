@@ -4,6 +4,23 @@ import './AdminDashboard.scss'
 function AdminDashboard({ setAuth }) {
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
+    const [coursesTaughtList, setCoursesTaughtList] = useState("");
+
+    async function getCoursesTaughtList() {
+        try {
+            const response = await fetch("http://localhost:5000/dashboard/taught-courses",
+                {
+                    method: "GET",
+                    headers: { token: localStorage.token }
+                });
+            const parseRes = await response.json();
+            setCoursesTaughtList(parseRes)
+            console.log(parseRes)
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     async function getName() {
         try {
             const response = await fetch("http://localhost:5000/dashboard/admin-verif",
@@ -20,22 +37,38 @@ function AdminDashboard({ setAuth }) {
     }
     function removeToken() {
         localStorage.removeItem('token')
-    }
+    };
+
     useEffect(() => {
-        getName()
-    })
+        getCoursesTaughtList();
+    }, []);
+
+    useEffect(() => {
+        getName();
+    });
+
     if (name === "") {
         return (
-            <h1>hi</h1>
+            <h1>Not authorized. Please return to the login screen.</h1>
         )
     } else {
         return (
             <div className="adminDashboard">
                 <AdminNavBar logOut={() => { setAuth(false); removeToken(); }} />
                 <h4>Hello, {name} ({role})</h4>
-                <div className="categoryCards">
-                    <div className="menuCard"></div>
-                    <div className="menuCard"></div>
+
+                <div className="categoryCardsContainer">
+                    <div className="coursesTaught">
+                        <h2>Your Courses</h2>
+                        {coursesTaughtList.map((course) => (
+                            <div className="courses">
+                                {`Course Name: ${course.course_name}`}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="assignmentsTBGraded">
+                        <div>Hi</div>
+                    </div>
                     <div className="menuCard"></div>
                     <div className="menuCard"></div>
                     <div className="menuCard"></div>

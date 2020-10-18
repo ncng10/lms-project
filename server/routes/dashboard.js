@@ -18,7 +18,7 @@ router.get('/', authorization, async (req, res) => {
 router.get('/admin-verif', authorization, async (req, res) => {
     try {
         //req.user has payload
-        const user = await pool.query("SELECT user_name FROM users WHERE user_id = $1 AND user_role ='Admin'", [
+        const user = await pool.query("SELECT user_name, user_role FROM users WHERE user_id = $1 AND user_role ='Admin'", [
             req.user
         ])
         res.json(user.rows[0]);
@@ -107,6 +107,43 @@ router.get('/files', authorization, async (req, res) => {
     } catch (error) {
         console.log(error.message);
         res.send("Cant retrieve files")
+    }
+});
+
+
+//allows admins to create a course for students to enroll in
+router.post('/create-course', authorization, async (req, res) => {
+    try {
+        const {
+            courseName,
+            openEnrollment,
+            restrictedEnrollment,
+            userName,
+        } = req.body;
+        const newCourse = await pool.query(
+            "INSERT INTO courses (course_name, open_enrollment,restricted_enrollment, course_instructor, course_instructor_id) VALUES($1,$2,$3,$4,$5)",
+            [courseName, openEnrollment, restrictedEnrollment, userName, req.user]
+        );
+        res.json(newCourse.rows)
+    } catch (error) {
+        console.log(error.message);
+        res.send("cant create course")
+    }
+});
+
+//gets all courses currently logged in admin teaches
+
+router.get('/taught-courses', authorization, async (req, res) => {
+    try {
+        const coursesTaught
+            = await pool.query(
+                "SELECT DISTINCT course_name, course_id FROM courses WHERE course_instructor_id = $1",
+                [req.user]
+            );
+        res.json(coursesTaught.rows)
+    } catch (error) {
+        console.log(error.message);
+        res.send("Cant get list of courses taught");
     }
 })
 
