@@ -8,7 +8,7 @@ import {
 import { CSSTransition } from 'react-transition-group'
 import './App.css';
 import Register from './components/Register';
-import Dashboard from './components/student-dashboard'
+import Dashboard from './components/Dashboard'
 import LandingPage from './components/pages/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
 import CourseListPage from './components/pages/CourseListPage'
