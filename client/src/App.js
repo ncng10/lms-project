@@ -21,28 +21,6 @@ import FilesPage from './components/pages/FilesPage';
 
 
 function App() {
-
-  //gets role of user logged in, does not allow student to log in as admin 
-  const [adminRole, setAdminRole] = useState(false);
-  async function getRole() {
-    try {
-      const response = await fetch("/dashboard/",
-        {
-          method: "GET",
-          headers: { token: localStorage.token }
-        });
-      const parseRes = await response.json();
-      parseRes.user_role === "Admin" ? setAdminRole(true) : setAdminRole(false);
-      console.log(parseRes.user_role)
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
-  const setAdminAuth = (boolean) => {
-    setAdminRole(boolean);
-  };
-
-
   //react hook that sets the status of auth from jwt token jwt token as valid
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
@@ -56,7 +34,7 @@ function App() {
     try {
       const response = await fetch("/auth/is-verify",
         {
-          method: "GET",
+          method: "POST",
           headers: { token: localStorage.token }
         });
 
