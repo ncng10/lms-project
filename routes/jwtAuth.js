@@ -79,7 +79,7 @@ router.post('/admin-login', validInfo, async (req, res) => {
     }
 })
 
-router.post('/is-verify', authorization, async (req, res) => {
+router.post('/is-verify', authorization, (req, res) => {
     try {
         res.json(true);
     } catch (err) {
