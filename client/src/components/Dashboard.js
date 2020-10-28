@@ -37,6 +37,7 @@ function Dashboard({ setAuth }) {
             const parseRes = await response.json();
             setName(parseRes.user_name)
             setRole(parseRes.user_role);
+            console.log(parseRes.user_name)
         } catch (err) {
             console.log(err.message)
         }
