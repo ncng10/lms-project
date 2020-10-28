@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 let secret_key = 'cf534gsgsdg2g' || process.env.JWT_SECRET
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
     const jwtToken = req.header("token");
     if (!jwtToken) {
         return res.status(403).json("Not authorized 1");
