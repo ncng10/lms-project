@@ -15,7 +15,7 @@ function StudentEnroll() {
         try {
             const body = { course_id };
             const response = await fetch(
-                "http://localhost:5000/dashboard/enroll",
+                "/dashboard/enroll",
                 {
                     method: "POST",
                     headers: {

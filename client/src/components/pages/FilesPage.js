@@ -14,7 +14,7 @@ function FilesPage() {
     }
     const getFiles = async () => {
         try {
-            const response = await fetch("http://localhost:5000/course-page/files",
+            const response = await fetch("/course-page/files",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -32,7 +32,7 @@ function FilesPage() {
         try {
             const body = { file_upload, fileDescription };
             const response = await fetch(
-                "http://localhost:5000/course-page/upload-file",
+                "/course-page/upload-file",
                 {
                     method: "POST",
                     headers: {

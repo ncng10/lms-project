@@ -8,7 +8,7 @@ function AdminDashboard({ setAuth }) {
 
     async function getCoursesTaughtList() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/taught-courses",
+            const response = await fetch("/dashboard/taught-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -23,7 +23,7 @@ function AdminDashboard({ setAuth }) {
 
     async function getName() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/admin-verif",
+            const response = await fetch("/dashboard/admin-verif",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }

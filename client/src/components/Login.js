@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import './AdminLogin.scss'
-
-const AdminLogin = ({ setAuth, setAdminAuth }) => {
+import { Link } from 'react-router-dom'
+const Login = ({ setAuth }) => {
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
@@ -10,8 +9,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
     const onChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
-
-    const [userRole, setRole] = useState('Admin')
+    const [userRole, setRole] = useState('Student')
     const setUserRole = (e) => {
         setRole(e.target.value)
     }
@@ -20,7 +18,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
         try {
             const body = { email, password, userRole };
             const response = await fetch(
-                "http://localhost:5000/auth/admin-login",
+                "/auth/login",
                 {
                     method: "POST",
                     headers: {
@@ -30,13 +28,12 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
                 }
             );
             const parseRes = await response.json();
+            console.log(body)
             if (parseRes.token) {
                 localStorage.setItem("token", parseRes.token);
                 setAuth(true);
-                setAdminAuth(true);
             } else {
                 setAuth(false);
-                setAdminAuth(false);
             }
         } catch (err) {
             console.error(err.message);
@@ -45,7 +42,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
     return (
         <div className="loginContainer">
             <img className="logo" src={require('./images/logo_2.png')} alt="" />
-            <h2>Administrator Login</h2>
+            <h2>Student Login</h2>
             <form onSubmit={onSubmitForm}>
                 <div className="input">
                     <label>Email:
@@ -68,7 +65,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
                 <div className="inputSelect">
                     <center><label>Account Type: <br />
                         <select onChange={e => setUserRole(e)}>
-                            <option value='Admin' name="Admin" >Admin</option>
+                            <option value='Student' name="Student" >Student</option>
                         </select>
                     </label></center>
                 </div>
@@ -78,4 +75,4 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
     )
 }
 
-export default AdminLogin
+export default Login

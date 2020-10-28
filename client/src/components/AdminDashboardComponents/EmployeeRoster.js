@@ -6,7 +6,7 @@ function EmployeeRoster() {
 
     async function getEmployeeList() {
         try {
-            const response = await fetch("http://localhost:5000/admin-dashboard/",
+            const response = await fetch("/admin-dashboard/",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }

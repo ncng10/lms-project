@@ -7,7 +7,7 @@ function AssignmentMenus() {
     const { courseID } = useParams();
     async function getAssignmentGroupsMaterial() {
         try {
-            const response = await fetch(`http://localhost:5000/course-page/assignment-groups-material/${courseID}`,
+            const response = await fetch(`/course-page/assignment-groups-material/${courseID}`,
                 {
                     method: "GET",
                     headers: { token: localStorage.token }

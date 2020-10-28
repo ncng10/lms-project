@@ -14,7 +14,7 @@ function Dashboard({ setAuth }) {
 
     async function getCourses() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard/enrolled-courses",
+            const response = await fetch("/dashboard/enrolled-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -29,7 +29,7 @@ function Dashboard({ setAuth }) {
 
     async function getName() {
         try {
-            const response = await fetch("http://localhost:5000/dashboard",
+            const response = await fetch("/dashboard",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
