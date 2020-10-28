@@ -26,7 +26,7 @@ function App() {
   const [adminRole, setAdminRole] = useState(false);
   async function getRole() {
     try {
-      const response = await fetch("/student-dashboard/",
+      const response = await fetch("/dashboard/",
         {
           method: "GET",
           headers: { token: localStorage.token }
