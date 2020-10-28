@@ -8,7 +8,7 @@ import {
 import { CSSTransition } from 'react-transition-group'
 import './App.css';
 import Register from './components/Register';
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/student-dashboard'
 import LandingPage from './components/pages/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
 import CourseListPage from './components/pages/CourseListPage'
@@ -26,7 +26,7 @@ function App() {
   const [adminRole, setAdminRole] = useState(false);
   async function getRole() {
     try {
-      const response = await fetch("/dashboard/",
+      const response = await fetch("/student-dashboard/",
         {
           method: "GET",
           headers: { token: localStorage.token }
@@ -108,7 +108,7 @@ function App() {
               appear={true}
               timeout={600}
               classNames="fade"><StudentRegistrationPage {...props} setAuth={setAuth} /></CSSTransition>) : (
-              <Redirect to="/dashboard" />)} />
+              <Redirect to="/student-dashboard" />)} />
 
           {/* Renders student login form, if authenticated, redirect to the student dashboard */}
           <Route exact path="/student-login" render={props => !isAuthenticated ? (
@@ -117,10 +117,10 @@ function App() {
               appear={true}
               timeout={600}
               classNames="fade"><StudentLoginPage {...props} setAuth={setAuth} /></CSSTransition>) : (
-              <Redirect to="/dashboard" />)} />
+              <Redirect to="/student-dashboard" />)} />
 
           {/* While in dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
-          <Route exact path="/dashboard" render={props => isAuthenticated ? (
+          <Route exact path="/student-dashboard" render={props => isAuthenticated ? (
             <Dashboard {...props} setAuth={setAuth} />) : (
               <Redirect to="/student-login" />)} />
 
