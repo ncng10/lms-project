@@ -5,7 +5,8 @@ import Login from '../Login'
 function LandingPage(props) {
     return (
         <div className="landingPage">
-            <Login setAuth={props.setAuth} />
+            <Link to="/student-login"><button>Student Login</button></Link>
+            <Link to="/admin-login"><button>Admin Login</button></Link>
         </div>
     )
 }
