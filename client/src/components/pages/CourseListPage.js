@@ -6,11 +6,11 @@ function CourseListPage() {
     const [availableCourses, setAvailableCourses] = useState([]);
     async function getEnrolledCourses() {
         try {
-            const response = await /dashboard/enrolled - courses",
-            {
-                method: "GET",
+            const response = await fetch("/dashboard/enrolled-courses",
+                {
+                    method: "GET",
                     headers: { token: localStorage.token }
-            });
+                });
             const parseResCourse = await response.json();
             setEnrolledCourses(parseResCourse);
             console.log(parseResCourse);
@@ -21,11 +21,11 @@ function CourseListPage() {
 
     async function getAvailableCourses() {
         try {
-            const response = await /dashboard/available - courses",
-            {
-                method: "GET",
+            const response = await fetch("/dashboard/available-courses",
+                {
+                    method: "GET",
                     headers: { token: localStorage.token }
-            })
+                })
 
 
             const parseResCourse = await response.json();
