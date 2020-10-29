@@ -13,22 +13,13 @@ function StudentTopBar(props) {
     ]
     let randomColor = colorPallete[Math.floor(Math.random() * colorPallete.length)]
 
-
-    const [menuActive, setMenuActive] = useState(false);
-    function menuFunctionality() {
-        if (!menuActive) {
-            setMenuActive(true)
-        } else {
-            setMenuActive(false)
-        }
-    }
     return (
         <div className="studentTopBar">
             <div className="userIcons">
                 <div className="mailIcon"><MailOutlineIcon style={{ fontSize: 45 }} /></div>
-                <div onClick={menuFunctionality} style={{ backgroundColor: randomColor }} className="letterIcon">{firstLetter}</div>
+                <div onClick={props.menuFunctionality} style={{ backgroundColor: randomColor }} className="letterIcon">{firstLetter}</div>
                 <center>
-                    {menuActive ?
+                    {props.menuActive ?
                         <div className="popupMenu">
                             <div className="pointer"></div>
                             <h3>Hello, {props.name} ({props.role})</h3>

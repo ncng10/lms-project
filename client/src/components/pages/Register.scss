@@ -1,0 +1,66 @@
+body{
+    background-color: #343a40;
+}
+
+.registrationContainer {
+    background-color: #343a40;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    margin-top: -50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .logo {
+        width: 75px;
+        height: 150px;
+        margin-bottom: 25px;
+    }
+    h3 {
+        margin-bottom:5px;
+        font-size: 20px;
+    }
+    input {
+        width: 285px;
+        margin-bottom: 5px;
+        height: 40px;
+        border-radius: 5px;
+        outline: none;
+        background-color: #f2f2f2;;
+        border: 1px solid lightgray;
+        padding: 10px;
+    }
+    .input {
+        margin-bottom: 10px;
+    }
+    }
+    button {
+        color: white;
+        width: 200px;
+        height: 40px;
+        border:none;
+        outline:none;
+        cursor: pointer;
+        margin-top:30px;
+        border: 1px solid rgb(83, 186, 221);
+        background-color: #343a40;
+        border-radius: 10px;
+    }
+    .adminLoginLink {
+        margin-top: 50px;
+        font-size: 12px;
+    }
+    .inputSelect {
+        margin-top:20px;
+        select {
+            width: 285px;
+            height:30px;
+            margin-top: 5px;
+            border: none;
+            outline: none;
+            border-radius: 5pxz;
+            background-color: white;
+        }
+}

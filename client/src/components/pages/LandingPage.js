@@ -5,8 +5,21 @@ import Login from '../Login'
 function LandingPage(props) {
     return (
         <div className="landingPage">
-            <Link to="/student-login"><button>Student Login</button></Link>
-            <Link to="/admin-login"><button>Admin Login</button></Link>
+            <div className="buttons">
+                <div className="buttonContainer">
+                    <Link to="/student-login"><button>Student Login</button></Link>
+                </div>
+                <div className="buttonContainer">
+                    <Link to="/admin-login"><button>Admin Login</button></Link>
+                </div>
+                <div className="buttonContainer">
+                    <Link to="/student-registration"><button>Student Registration</button></Link>
+                </div>
+
+            </div>
+
+
+
         </div>
     )
 }

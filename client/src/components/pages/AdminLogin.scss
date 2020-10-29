@@ -7,3 +7,13 @@
         margin-bottom: 5px;
     }
 }
+.backButton {
+    border: 3px solid white;
+    height: 30px;
+    width: 30px;
+    transform: rotate(45deg);
+    border-right: none;
+    border-top: none;
+    margin-left: 15px;
+    margin-top: 20px;
+}

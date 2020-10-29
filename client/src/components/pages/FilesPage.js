@@ -61,7 +61,7 @@ function FilesPage() {
                 <ol className="unorderedListFiles">
                     {filesList.map((file) => (
                         <li>
-                            <a target="_blank" href={file.file_upload}>{file.file_description}</a>
+                            <a target="_blank" rel="noopener noreferrer" href={file.file_upload}>{file.file_description}</a>
                         </li>
                     ))}
                 </ol>

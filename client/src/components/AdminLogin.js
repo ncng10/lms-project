@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom';
 import '../components/pages/AdminLogin.scss'
 const AdminLogin = ({ setAuth, setAdminAuth }) => {
     const [inputs, setInputs] = useState({
@@ -42,43 +43,48 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
         }
     };
     return (
-        <div className="loginContainer">
-            <img className="logo" src={require('./images/logo_2.png')} alt="" />
-            <h3>Swift LMS Admin Portal</h3>
-            <form onSubmit={onSubmitForm}>
-                <div className="input">
-                    <label>
-                        <br />
-                        <input name="email"
-                            value={email}
-                            placeholder="Email"
-                            type="text"
-                            onChange={e => onChange(e)} />
-                    </label>
+        <React.Fragment>
+            <Link to="/">
+                <div className="backButton"></div>
+            </Link>
+            <div className="loginContainer">
+                <img className="logo" src={require('./images/logo_2.png')} alt="" />
+                <h3>Swift LMS Admin Portal</h3>
+                <form onSubmit={onSubmitForm}>
+                    <div className="input">
+                        <label>
+                            <br />
+                            <input name="email"
+                                value={email}
+                                placeholder="Email"
+                                type="text"
+                                onChange={e => onChange(e)} />
+                        </label>
+                    </div>
+                    <div className="input">
+                        <label>
+                            <br />
+                            <input name="password"
+                                value={password} p
+                                placeholder="Password"
+                                type="password"
+                                onChange={e => { onChange(e); console.log(userRole) }} />
+                        </label>
+                    </div>
+                    <div className="inputSelect">
+                        <center><label>Account Type: <br />
+                            <select onChange={e => setUserRole(e)}>
+                                <option value='Admin' name="Admin" >Admin</option>
+                            </select>
+                        </label></center>
+                    </div>
+                    <center><button type="submit" >Log In</button></center>
+                </form>
+                <div className="adminLoginLink">
+                    <span>Students login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="student-login">here</a>.</span>
                 </div>
-                <div className="input">
-                    <label>
-                        <br />
-                        <input name="password"
-                            value={password} p
-                            placeholder="Password"
-                            type="password"
-                            onChange={e => { onChange(e); console.log(userRole) }} />
-                    </label>
-                </div>
-                <div className="inputSelect">
-                    <center><label>Account Type: <br />
-                        <select onChange={e => setUserRole(e)}>
-                            <option value='Admin' name="Admin" >Admin</option>
-                        </select>
-                    </label></center>
-                </div>
-                <center><button type="submit" >Log In</button></center>
-            </form>
-            <div className="adminLoginLink">
-                <span>Students login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="/">here</a></span>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -53,30 +53,43 @@ function Dashboard({ setAuth }) {
     useEffect(() => {
         getCourses();
     }, []);
-
+    const [menuActive, setMenuActive] = useState(false);
+    function menuFunctionality() {
+        if (!menuActive) {
+            setMenuActive(true)
+        } else {
+            setMenuActive(false)
+        }
+    }
+    function menuFunctionalityBody() {
+        if (menuActive) {
+            setMenuActive(false)
+        }
+    }
     return (
-        <div className="dashboardBody">
+        <React.Fragment>
             <div className="topMenu">
                 <center><div>
-                    <StudentTopBar setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
+                    <StudentTopBar menuActive={menuActive} menuFunctionality={menuFunctionality} setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
             </div >
-
-            <div className="sideBarMenuStudent">
-                {navBarActive ?
-                    <div> <StudentNavbar /></div> : null}
+            <div className="dashboardBody" onClick={menuFunctionalityBody}>
+                <div className="sideBarMenuStudent">
+                    {navBarActive ?
+                        <div> <StudentNavbar /></div> : null}
+                </div>
+                <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    justifyContent: 'center'
+                }} className="courseCardsContainer">
+                    {courses.map((course) => (
+                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
+                            <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
+                    ))}
+                </div>
             </div>
-            <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                justifyContent: 'center'
-            }} className="courseCardsContainer">
-                {courses.map((course) => (
-                    <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
-                        <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
-                ))}
-            </div>
-        </div>
+        </React.Fragment>
     )
 }
 export default Dashboard
