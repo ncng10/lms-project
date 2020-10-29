@@ -56,7 +56,7 @@ function App() {
     try {
       const response = await fetch("/auth/is-verify",
         {
-          method: "POST",
+          method: "GET",
           headers: { token: localStorage.token }
         });
 
