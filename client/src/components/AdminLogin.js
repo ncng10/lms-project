@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './AdminLogin.scss'
-
+import '../components/pages/AdminLogin.scss'
 const AdminLogin = ({ setAuth, setAdminAuth }) => {
     const [inputs, setInputs] = useState({
         email: "",
@@ -45,22 +44,24 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
     return (
         <div className="loginContainer">
             <img className="logo" src={require('./images/logo_2.png')} alt="" />
-            <h2>Administrator Login</h2>
+            <h3>Swift LMS Admin Portal</h3>
             <form onSubmit={onSubmitForm}>
                 <div className="input">
-                    <label>Email:
-                    <br />
+                    <label>
+                        <br />
                         <input name="email"
                             value={email}
+                            placeholder="Email"
                             type="text"
                             onChange={e => onChange(e)} />
                     </label>
                 </div>
                 <div className="input">
-                    <label>Password:
-                    <br />
+                    <label>
+                        <br />
                         <input name="password"
                             value={password}
+                            placeholder="Password"
                             type="password"
                             onChange={e => { onChange(e); console.log(userRole) }} />
                     </label>
@@ -74,6 +75,9 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
                 </div>
                 <center><button type="submit" >Log In</button></center>
             </form>
+            <div className="adminLoginLink">
+                <span>Students login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="student-login">here.</a></span>
+            </div>
         </div>
     )
 }

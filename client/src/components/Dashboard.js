@@ -65,7 +65,12 @@ function Dashboard({ setAuth }) {
                 {navBarActive ?
                     <div> <StudentNavbar /></div> : null}
             </div>
-            <div className="courseCardsContainer">
+            <div style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: 'center'
+            }} className="courseCardsContainer">
                 {courses.map((course) => (
                     <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
                         <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>

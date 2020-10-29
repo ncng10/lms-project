@@ -10,8 +10,8 @@ function CourseHomePage() {
     //local host/classinfo/userid/courseID or localhost/classinfo/courseID
     return (
         <div className="courseHomePage">
-            <StudentNavbar />
             <AssignmentMenus />
+            <StudentNavbar />
         </div>
     )
 }

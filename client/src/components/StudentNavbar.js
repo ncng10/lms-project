@@ -5,7 +5,6 @@ import { BiDesktop, BiPencil, BiListUl, Bicog, BiCog } from "react-icons/bi";
 function StudentNavbar() {
     return (
         <div className="studentNavBar">
-            <img className="navLogo" src={require('./images/logo-smaller.png')} alt="" />
             <ul >
                 <Link to="/dashboard">
                     <li >

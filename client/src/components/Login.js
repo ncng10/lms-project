@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import "./pages/StudentLogin.scss"
 const Login = ({ setAuth }) => {
     const [inputs, setInputs] = useState({
         email: "",
@@ -42,21 +43,22 @@ const Login = ({ setAuth }) => {
     return (
         <div className="loginContainer">
             <img className="logo" src={require('./images/logo_2.png')} alt="" />
-            <h2>Student Login</h2>
+            <h3>Swift Learning Management System</h3>
             <form onSubmit={onSubmitForm}>
                 <div className="input">
-                    <label>Email:
-                    <br />
-                        <input name="email"
+                    <label>
+                        <br />
+                        <input placeholder="Email" name="email"
                             value={email}
                             type="text"
                             onChange={e => onChange(e)} />
                     </label>
                 </div>
                 <div className="input">
-                    <label>Password:
-                    <br />
+                    <label>
+                        <br />
                         <input name="password"
+                            placeholder="Password"
                             value={password}
                             type="password"
                             onChange={e => { onChange(e); console.log(userRole) }} />
@@ -71,6 +73,9 @@ const Login = ({ setAuth }) => {
                 </div>
                 <center><button type="submit" >Log In</button></center>
             </form>
+            <div className="adminLoginLink">
+                <span>Administrators and instructors login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="admin-login">here</a></span>
+            </div>
         </div>
     )
 }
