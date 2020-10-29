@@ -26,7 +26,7 @@ function App() {
   const [adminRole, setAdminRole] = useState(false);
   async function getRole() {
     try {
-      const response = await fetch("http://localhost:5000/dashboard/",
+      const response = await fetch("/dashboard/",
         {
           method: "GET",
           headers: { token: localStorage.token }
@@ -54,7 +54,7 @@ function App() {
   //verifies jwt token and confirms authentication via is-verify route from nodejs
   async function isAuth() {
     try {
-      const response = await fetch("http://localhost:5000/auth/is-verify",
+      const response = await fetch("/auth/is-verify",
         {
           method: "POST",
           headers: { token: localStorage.token }

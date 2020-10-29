@@ -6,11 +6,11 @@ function EmployeeRoster() {
 
     async function getEmployeeList() {
         try {
-            const response = await fetch("http://localhost:5000/admin-dashboard/",
-                {
-                    method: "GET",
+            const response = await /admin-dashboard/",
+            {
+                method: "GET",
                     headers: { token: localStorage.token }
-                });
+            });
             const parseRes = await response.json();
             setEmployeeList(parseRes)
             console.log(parseRes)

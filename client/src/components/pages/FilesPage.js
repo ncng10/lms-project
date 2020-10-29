@@ -14,11 +14,11 @@ function FilesPage() {
     }
     const getFiles = async () => {
         try {
-            const response = await fetch("http://localhost:5000/course-page/files",
-                {
-                    method: "GET",
+            const response = await /course-page/files",
+            {
+                method: "GET",
                     headers: { token: localStorage.token }
-                });
+            });
             const parseRes = await response.json();
             setFilesList(parseRes);
             console.log(parseRes);
