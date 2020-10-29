@@ -60,7 +60,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
                     <label>
                         <br />
                         <input name="password"
-                            value={password}
+                            value={password} p
                             placeholder="Password"
                             type="password"
                             onChange={e => { onChange(e); console.log(userRole) }} />
@@ -76,7 +76,7 @@ const AdminLogin = ({ setAuth, setAdminAuth }) => {
                 <center><button type="submit" >Log In</button></center>
             </form>
             <div className="adminLoginLink">
-                <span>Students login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="student-login">here.</a></span>
+                <span>Students login </span><span><a style={{ textDecoration: 'none', color: '#7692F8' }} href="/">here</a></span>
             </div>
         </div>
     )
