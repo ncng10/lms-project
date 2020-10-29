@@ -14,7 +14,7 @@ function Dashboard({ setAuth }) {
 
     async function getCourses() {
         try {
-            const response = await fetch("/dashboard/enrolled-courses",
+            const response = await fetch("http://localhost:5000/dashboard/enrolled-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -29,7 +29,7 @@ function Dashboard({ setAuth }) {
 
     async function getName() {
         try {
-            const response = await fetch("/dashboard",
+            const response = await fetch("http://localhost:5000/dashboard",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -66,6 +66,7 @@ function Dashboard({ setAuth }) {
                     <div> <StudentNavbar /></div> : null}
             </div>
             <div className="courseCardsContainer">
+                <h1>{name}</h1>
                 {courses.map((course) => (
                     <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
                         <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>

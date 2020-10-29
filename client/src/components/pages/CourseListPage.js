@@ -6,7 +6,7 @@ function CourseListPage() {
     const [availableCourses, setAvailableCourses] = useState([]);
     async function getEnrolledCourses() {
         try {
-            const response = await fetch("/dashboard/enrolled-courses",
+            const response = await fetch("http://localhost:5000/dashboard/enrolled-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
@@ -21,7 +21,7 @@ function CourseListPage() {
 
     async function getAvailableCourses() {
         try {
-            const response = await fetch("/dashboard/available-courses",
+            const response = await fetch("http://localhost:5000/dashboard/available-courses",
                 {
                     method: "GET",
                     headers: { token: localStorage.token }
