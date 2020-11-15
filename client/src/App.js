@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group'
 import './App.css';
-import Register from './components/Register';
 import Dashboard from './components/Dashboard'
 import LandingPage from './components/pages/LandingPage';
 import AdminDashboard from './components/AdminDashboard'
@@ -15,33 +14,11 @@ import CourseListPage from './components/pages/CourseListPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import StudentLoginPage from './components/pages/StudentLoginPage';
 import StudentRegistrationPage from './components/pages/StudentRegistrationPage';
-import StudentNavbar from './components/StudentNavbar';
 import CourseHomePage from './components/pages/CourseHomePage';
 import FilesPage from './components/pages/FilesPage';
 
 
 function App() {
-
-  //gets role of user logged in, does not allow student to log in as admin 
-  const [adminRole, setAdminRole] = useState(false);
-  async function getRole() {
-    try {
-      const response = await fetch("/dashboard/",
-        {
-          method: "GET",
-          headers: { token: localStorage.token }
-        });
-      const parseRes = await response.json();
-      parseRes.user_role === "Admin" ? setAdminRole(true) : setAdminRole(false);
-      console.log(parseRes.user_role)
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
-  const setAdminAuth = (boolean) => {
-    setAdminRole(boolean);
-  };
-
 
   //react hook that sets the status of auth from jwt token jwt token as valid
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -76,7 +53,7 @@ function App() {
 
 
   //css transition
-  const [appearHome, setAppearHome] = useState(true);
+  const [appearHome,] = useState(true);
   return (
     <Fragment>
       <Router>
@@ -98,7 +75,7 @@ function App() {
               in={appearHome}
               appear={true}
               timeout={600}
-              classNames="fade"><AdminLoginPage {...props} setAuth={setAuth} setAdminAuth={setAdminAuth} /></CSSTransition>) : (
+              classNames="fade"><AdminLoginPage {...props} setAuth={setAuth} /></CSSTransition>) : (
               <Redirect to="/admin-dashboard" />)} />
 
           {/* Renders student registration form, if authenticated, redirect to the student dashboard */}

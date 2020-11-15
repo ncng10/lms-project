@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './AssignmentMenu.scss'
 function AssignmentMenus() {
-    const [assignmentGroups, setAssignmentGroups] = useState([]);
     const [assignmentGroupsMaterial, setAssignmentGroupsMaterial] = useState([]);
     const { courseID } = useParams();
     async function getAssignmentGroupsMaterial() {
@@ -22,7 +21,7 @@ function AssignmentMenus() {
 
     useEffect(() => {
         getAssignmentGroupsMaterial();
-    }, []);
+    });
     return (
         <div className="pageBody">
             {assignmentGroupsMaterial.map((assignmentGroup) => (

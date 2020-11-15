@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './StudentDashboard.scss'
 import { Link } from 'react-router-dom'
-import { BiDesktop, BiPencil, BiListUl, Bicog, BiCog } from "react-icons/bi";
 function StudentNavbar() {
     const [navBar, setNavBarActive] = useState(true);
 
@@ -16,25 +15,25 @@ function StudentNavbar() {
         <React.Fragment>
             <div className={navBar ? "activeNav" : "studentNavBar"}>
                 <ul >
-                    <Link to="/dashboard">
+                    <Link to="/student-dashboard">
                         <li className="dashboardIcon">
-                            <a style={{ textDecoration: "none", color: 'white' }} >
+                            <span style={{ textDecoration: "none", color: 'white' }} >
                                 Dashboard
-                                </a>
+                                </span>
                         </li>
                     </Link>
                     <Link to="/course-list">
                         <li className="coursesIcon">
-                            <a style={{ textDecoration: "none", color: 'white' }}>
+                            <span style={{ textDecoration: "none", color: 'white' }}>
                                 Courses
-                            </a>
+                            </span>
                         </li>
                     </Link>
                     <Link>
                         <li className="gradesIcon">
-                            <a style={{ textDecoration: "none", color: 'white' }} >
+                            <span style={{ textDecoration: "none", color: 'white' }} >
                                 Grades
-                        </a>
+                        </span>
                         </li>
                     </Link>
 

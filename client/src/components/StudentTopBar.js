@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './StudentDashboard.scss'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import { BiFile, BiEdit, BiTask, BiLogOut } from "react-icons/bi";
+import { BiFile, BiEdit, BiTask } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 
 function StudentTopBar(props) {
@@ -26,15 +26,15 @@ function StudentTopBar(props) {
                             <div className="topMenuLinks">
                                 <div className="filesTopMenu">
                                     <Link to="/files"><div><BiFile fontSize="40" /></div></Link>
-                                    <a><span>Files</span></a>
+                                    <span>Files</span>
                                 </div>
                                 <div className="editProfileTopMenu">
                                     <div><BiEdit fontSize="40" /></div>
-                                    <a><span>Edit Profile </span></a>
+                                    <span>Edit Profile </span>
                                 </div>
                                 <div className="todoTopMenu">
                                     <div><BiTask fontSize="40" /></div>
-                                    <a><span>Todo List</span></a>
+                                    <span>Todo List</span>
                                 </div>
                             </div>
                             <div className="logOutContainer"><button style={{ backgroundColor: randomColor }} onClick={() => { props.setAuth(false); props.removeToken(); }}>Logout</button></div>

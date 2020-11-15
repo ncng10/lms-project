@@ -3,14 +3,13 @@ import CourseCard from './CourseCard';
 import './StudentDashboard.scss'
 import StudentNavbar from './StudentNavbar';
 import StudentTopBar from './StudentTopBar';
-import StudentEnroll from './StudentEnroll';
 import { Link } from 'react-router-dom'
 
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
     const [courses, setCourses] = useState([]);
-    const [navBarActive, setNavBarActive] = useState(true);
+    const [navBarActive,] = useState(true);
 
     async function getCourses() {
         try {

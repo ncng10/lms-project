@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import Register from '../Register'
 import "./LandingPage.scss"
 import { CSSTransition } from 'react-transition-group'

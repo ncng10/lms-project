@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import "./LandingPage.scss"
-import Login from '../Login'
 function LandingPage(props) {
     return (
         <div className="landingPage">

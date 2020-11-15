@@ -15,13 +15,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrpyt": "^2.0.0",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "heroku": "^7.46.2",
     "jsonwebtoken": "^8.5.1",
+    "netlify": "^4.9.0",
     "nodemon": "^2.0.6",
     "pg": "^8.4.2",
     "postgresql": "0.0.1"
