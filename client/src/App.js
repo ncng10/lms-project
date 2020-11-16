@@ -8,7 +8,7 @@ import {
 import { CSSTransition } from 'react-transition-group'
 import './App.css';
 import Dashboard from './components/Dashboard'
-import LandingPage from './components/pages/LandingPage';
+
 import AdminDashboard from './components/AdminDashboard'
 import CourseListPage from './components/pages/CourseListPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
@@ -39,8 +39,8 @@ function App() {
 
       const parseRes = await response.json();
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-    } catch (err) {
-      console.log(err.message)
+    } catch {
+
     }
   }
 
@@ -60,15 +60,6 @@ function App() {
         <Switch>
 
           <Route exact path="/course-list" component={CourseListPage} />
-
-          {/* Renders landing page */}
-          <Route exact path="/" > <CSSTransition
-            in={appearHome}
-            appear={true}
-            timeout={600}
-            classNames="fade"><LandingPage /></CSSTransition></Route>
-
-
           {/* Renders admin login, if authenticated via login form, redirect to the admin dashboard */}
           <Route exact path="/admin-login" render={props => !isAuthenticated ? (
             <CSSTransition
@@ -88,7 +79,7 @@ function App() {
               <Redirect to="/student-dashboard" />)} />
 
           {/* Renders student login form, if authenticated, redirect to the student dashboard */}
-          <Route exact path="/student-login" render={props => !isAuthenticated ? (
+          <Route exact path="/" render={props => !isAuthenticated ? (
             <CSSTransition
               in={appearHome}
               appear={true}
@@ -99,7 +90,7 @@ function App() {
           {/* While in dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/student-dashboard" render={props => isAuthenticated ? (
             <Dashboard {...props} setAuth={setAuth} />) : (
-              <Redirect to="/student-login" />)} />
+              <Redirect to="/" />)} />
 
           {/* While in admin dashboard, if you are still authenticated, the dashboard stays rendered, if you are not authenticated, it will redirect to the landing page */}
           <Route exact path="/admin-dashboard" render={props => isAuthenticated ? (

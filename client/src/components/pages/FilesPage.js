@@ -21,9 +21,7 @@ function FilesPage() {
                 });
             const parseRes = await response.json();
             setFilesList(parseRes);
-            console.log(parseRes);
-        } catch (error) {
-            console.log(error.message)
+        } catch {
         }
     }
 
@@ -43,9 +41,7 @@ function FilesPage() {
                 }
             );
             const parseRes = await response.json();
-            console.log(parseRes)
         } catch (error) {
-            console.log(error.message);
         }
     }
 

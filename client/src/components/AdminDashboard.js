@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import AdminNavBar from './AdminDashboardComponents/AdminNavBar'
-import './AdminDashboard.scss'
 function AdminDashboard({ setAuth }) {
     const [name, setName] = useState("");
     const [role, setRole] = useState("");
@@ -15,9 +14,7 @@ function AdminDashboard({ setAuth }) {
                 });
             const parseRes = await response.json();
             setCoursesTaughtList(parseRes)
-            console.log(parseRes)
-        } catch (error) {
-            console.log(error.message);
+        } catch {
         }
     }
 
@@ -31,8 +28,8 @@ function AdminDashboard({ setAuth }) {
             const parseRes = await response.json();
             setName(parseRes.user_name)
             setRole(parseRes.user_role)
-        } catch (err) {
-            console.log(err.message)
+        } catch {
+
         }
     }
     function removeToken() {

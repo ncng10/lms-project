@@ -1,6 +1,4 @@
 import React from 'react'
-import './AdminNavBar.scss'
-
 function AdminNavBar(props) {
     return (
         <div className="adminNavBar">

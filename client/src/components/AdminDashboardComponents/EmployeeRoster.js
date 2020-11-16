@@ -13,9 +13,7 @@ function EmployeeRoster() {
                 });
             const parseRes = await response.json();
             setEmployeeList(parseRes)
-            console.log(parseRes)
         } catch (err) {
-            console.log(err.message)
         }
     }
     useEffect(() => {

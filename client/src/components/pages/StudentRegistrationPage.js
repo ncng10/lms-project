@@ -1,6 +1,5 @@
 import React from 'react'
 import Register from '../Register'
-import "./LandingPage.scss"
 import { CSSTransition } from 'react-transition-group'
 
 function StudentRegistrationPage(props) {

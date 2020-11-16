@@ -1,6 +1,5 @@
 import React from 'react'
 import AdminLogin from '../AdminLogin'
-import "./StudentLogin.scss";
 import { CSSTransition } from 'react-transition-group'
 
 function AdminLoginPage(props) {

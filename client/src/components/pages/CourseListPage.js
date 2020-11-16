@@ -13,9 +13,7 @@ function CourseListPage() {
                 });
             const parseResCourse = await response.json();
             setEnrolledCourses(parseResCourse);
-            console.log(parseResCourse);
-        } catch (err) {
-            console.log(err.message)
+        } catch {
         }
     }
 
@@ -30,9 +28,7 @@ function CourseListPage() {
 
             const parseResCourse = await response.json();
             setAvailableCourses(parseResCourse);
-            console.log(parseResCourse);
-        } catch (err) {
-            console.log(err.message)
+        } catch {
         }
     }
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import './AssignmentMenu.scss'
 function AssignmentMenus() {
     const [assignmentGroupsMaterial, setAssignmentGroupsMaterial] = useState([]);
     const { courseID } = useParams();
@@ -13,9 +12,8 @@ function AssignmentMenus() {
                 });
             const parseRes = await response.json();
             setAssignmentGroupsMaterial(parseRes);
-            console.log(parseRes);
-        } catch (err) {
-            console.log(err.message)
+        } catch {
+
         }
     }
 

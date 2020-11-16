@@ -26,9 +26,7 @@ function Register({ setAuth, setUserRole }) {
             const parseRes = await response.json();
             localStorage.setItem("token", parseRes.token);
             setAuth(true);
-            console.log(parseRes);
-        } catch (err) {
-            console.log(err.message)
+        } catch {
         }
     }
     return (

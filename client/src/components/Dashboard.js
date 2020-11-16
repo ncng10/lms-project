@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import CourseCard from './CourseCard';
-import './StudentDashboard.scss'
+import CourseCardContainer from './CourseCard';
 import StudentNavbar from './StudentNavbar';
 import StudentTopBar from './StudentTopBar';
 import { Link } from 'react-router-dom'
+import { DashboardContainer, CardsContainer } from '../styled-components/DashboardStyles';
 
 function Dashboard({ setAuth }) {
     const [name, setName] = useState("");
@@ -20,9 +20,8 @@ function Dashboard({ setAuth }) {
                 });
             const parseResCourse = await response.json();
             setCourses(parseResCourse);
-            console.log(parseResCourse);
-        } catch (err) {
-            console.log(err.message)
+        } catch {
+
         }
     }
 
@@ -36,9 +35,7 @@ function Dashboard({ setAuth }) {
             const parseRes = await response.json();
             setName(parseRes.user_name)
             setRole(parseRes.user_role);
-            console.log(parseRes.user_name)
-        } catch (err) {
-            console.log(err.message)
+        } catch {
         }
     }
     function removeToken() {
@@ -67,27 +64,21 @@ function Dashboard({ setAuth }) {
     }
     return (
         <React.Fragment>
-            <div className="topMenu">
-                <center><div>
-                    <StudentTopBar menuActive={menuActive} menuFunctionality={menuFunctionality} setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
-            </div >
-            <div className="dashboardBody" onClick={menuFunctionalityBody}>
-                <div className="sideBarMenuStudent">
-                    {navBarActive ?
-                        <div> <StudentNavbar /></div> : null}
+            <DashboardContainer>
+                <div className="topMenu">
+                    <center><div>
+                        <StudentTopBar menuActive={menuActive} menuFunctionality={menuFunctionality} setAuth={setAuth} removeToken={removeToken} name={name} role={role} /></div></center>
+                </div >
+                <div className="dashboardBody" onClick={menuFunctionalityBody}>
+                    <div> <StudentNavbar /></div>
+                    <CardsContainer>
+                        {courses.map((course) => (
+                            <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
+                                <CourseCardContainer course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
+                        ))}
+                    </CardsContainer>
                 </div>
-                <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    alignItems: "center",
-                    justifyContent: 'center'
-                }} className="courseCardsContainer">
-                    {courses.map((course) => (
-                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/course/${course.course_id}`}>
-                            <CourseCard course_id={course.course_id} courseName={course.course_name} courseInstructor={course.course_instructor} /></Link>
-                    ))}
-                </div>
-            </div>
+            </DashboardContainer>
         </React.Fragment>
     )
 }

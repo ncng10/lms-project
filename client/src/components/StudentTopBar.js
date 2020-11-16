@@ -1,5 +1,4 @@
 import React from 'react'
-import './StudentDashboard.scss'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { BiFile, BiEdit, BiTask } from "react-icons/bi";
 import { Link } from 'react-router-dom';
@@ -14,10 +13,12 @@ function StudentTopBar(props) {
     let randomColor = colorPallete[Math.floor(Math.random() * colorPallete.length)]
 
     return (
-        <div className="studentTopBar">
-            <div className="userIcons">
+        <div
+            style={{ marginBottom: 25 }}
+            className="studentTopBar">
+            <div style={{ display: 'flex', float: 'right', marginRight: 15 }} className="userIcons">
                 <div className="mailIcon"><MailOutlineIcon style={{ fontSize: 45 }} /></div>
-                <div onClick={props.menuFunctionality} style={{ backgroundColor: randomColor }} className="letterIcon">{firstLetter}</div>
+                <div onClick={props.menuFunctionality} style={{ marginLeft: 15, backgroundColor: randomColor, width: 50, height: 50, display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: 25 }} className="letterIcon">{firstLetter}</div>
                 <center>
                     {props.menuActive ?
                         <div className="popupMenu">

@@ -7,7 +7,6 @@ function StudentEnroll() {
     const { course_id } = inputs;
     const onChange = (e) => {
         setInputs({ [e.target.name]: e.target.value });
-        console.log(course_id)
     }
 
     const onSubmitForm = async (e) => {
@@ -26,9 +25,8 @@ function StudentEnroll() {
                 }
             );
             const parseRes = await response.json();
-            console.log(parseRes)
-        } catch (err) {
-            console.error(err.message);
+        } catch {
+
         }
     };
 
