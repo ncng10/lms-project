@@ -38,3 +38,10 @@ export const Hamburger = styled.div`
         margin-top:7px;
     }
 `
+
+export const TopBarContent = styled.div`
+  position:absolute;
+  right: 25px;
+  top: 50px;
+  background-color:white;
+`

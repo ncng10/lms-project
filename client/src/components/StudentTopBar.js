@@ -2,6 +2,7 @@ import React from 'react'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { BiFile, BiEdit, BiTask } from "react-icons/bi";
 import { Link } from 'react-router-dom';
+import { TopBarContent } from '../styled-components/DashboardStyles';
 
 function StudentTopBar(props) {
     const user = props.name;
@@ -16,12 +17,17 @@ function StudentTopBar(props) {
         <div
             style={{ marginBottom: 25 }}
             className="studentTopBar">
-            <div style={{ display: 'flex', float: 'right', marginRight: 15 }} className="userIcons">
+            <div
+                style={{
+                    display: 'flex',
+                    float: 'right',
+                    marginRight: 15,
+                }} className="userIcons">
                 <div className="mailIcon"><MailOutlineIcon style={{ fontSize: 45 }} /></div>
                 <div onClick={props.menuFunctionality} style={{ marginLeft: 15, backgroundColor: randomColor, width: 50, height: 50, display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: 25 }} className="letterIcon">{firstLetter}</div>
                 <center>
                     {props.menuActive ?
-                        <div className="popupMenu">
+                        <TopBarContent className="popupMenu">
                             <div className="pointer"></div>
                             <h3>Hello, {props.name} ({props.role})</h3>
                             <div className="topMenuLinks">
@@ -39,7 +45,7 @@ function StudentTopBar(props) {
                                 </div>
                             </div>
                             <div className="logOutContainer"><button style={{ backgroundColor: randomColor }} onClick={() => { props.setAuth(false); props.removeToken(); }}>Logout</button></div>
-                        </div> : null}
+                        </TopBarContent> : null}
                 </center>
             </div>
         </div>
